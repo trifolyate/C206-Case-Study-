@@ -21,10 +21,10 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Ant
-      run: ant -noinput -buildfile ResourceCentre_Student/build.xml
+      run: ant -noinput -buildfile C206_CaseStudy/build.xml
     - name: Compile JUnit Test
-      run: javac -cp ResourceCentre_Student/bin:ResourceCentre_Student/ant/junit.jar:ResourceCentre_Student/ant/org.hamcrest.core_1.3.0.v201303031735.jar ResourceCentre_Student/test/ResourceCentreTest.java -d ResourceCentre_Student/bin
+      run: javac -cp C206_CaseStudy/bin:C206_CaseStudy/ant/junit.jar:C206_CaseStudy/ant/org.hamcrest.core_1.3.0.v201303031735.jar C206_CaseStudy/test/C206_CaseStudyTest.java -d C206_CaseStudy/bin
     - name: Run JUnit test
-      run: java -cp ResourceCentre_Student/bin:ResourceCentre_Student/ant/junit.jar:ResourceCentre_Student/ant/org.hamcrest.core_1.3.0.v201303031735.jar org.junit.runner.JUnitCore ResourceCentreTest
+      run: java -cp C206_CaseStudy/bin:C206_CaseStudy/ant/junit.jar:C206_CaseStudy/ant/org.hamcrest.core_1.3.0.v201303031735.jar org.junit.runner.JUnitCore C206_CaseStudyTest
     - name: Test Execution
-      run: java -cp ResourceCentre_Student/bin ResourceCentre < ResourceCentre_Student/user_input.txt
+      run: java -cp C206_CaseStudy/bin C206_CaseStudy< C206_CaseStudy/user_input.txt

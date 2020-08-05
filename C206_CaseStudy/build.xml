@@ -3,12 +3,12 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ResourceCentre">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="C206_CaseStudy">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="ResourceCentre.classpath">
+    <path id="C206_CaseStudy.classpath">
         <pathelement location="bin"/>
     </path>
     <target name="init">
@@ -30,13 +30,13 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <classpath refid="ResourceCentre.classpath"/>
+            <classpath refid="C206_CaseStudy.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target name="ResourceCentre">
-        <java classname="ResourceCentre" failonerror="true" fork="yes">
-            <classpath refid="ResourceCentre.classpath"/>
+    <target name="C206_CaseStudy">
+        <java classname="C206_CaseStudy" failonerror="true" fork="yes">
+            <classpath refid="C206_CaseStudy.classpath"/>
         </java>
     </target>
 </project>
