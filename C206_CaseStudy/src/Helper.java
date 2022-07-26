@@ -21,7 +21,7 @@ public class Helper {
         System.out.println("*** Please enter an integer ***");
       }
     }
-    return input;
+    return input; //test
   }
 
   public static double readDouble(String prompt) {
