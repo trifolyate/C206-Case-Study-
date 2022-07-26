@@ -11,7 +11,7 @@ public class C206_CaseStudyTest {
 	
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
-	ArrayList<teacher> teacherList = new ArrayList<teacher>();
+	ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -22,7 +22,7 @@ public class C206_CaseStudyTest {
 		
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
-		ArrayList<teacher> teacherList = new ArrayList<teacher>();
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 	}
 
 	@After

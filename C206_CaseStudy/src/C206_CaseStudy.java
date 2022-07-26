@@ -17,7 +17,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
-		ArrayList<teacher> teacherList = new ArrayList<teacher>();
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		
 		int option = 0;
 
