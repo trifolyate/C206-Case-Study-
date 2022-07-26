@@ -131,6 +131,22 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 		//does this work?
+	
+		//================================= Option 2 Add an item (CRUD - Create) =================================
+		//public static parent inputParent() {
+			//String tag = Helper.readString("Enter asset tag > ");
+			
+
+			//parent Parent= new parent(tag);
+			//return Parent;
+			
+		//}
+		public static void addParent(ArrayList<parent> parentList, parent parent) {
+			
+			//parentList.add(parent);
+			
+		}
+		
 
 
 
