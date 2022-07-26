@@ -28,7 +28,7 @@ public class C206_CaseStudy {
 			if (option == OPTION_VIEW) {
 				// View all items
 				//C206_CaseStudy.viewAllStudent(studentList);
-				//C206_CaseStudy.viewAllParent(parentList);
+				C206_CaseStudy.viewAllParent(parentList);
 				//C206_CaseStudy.viewAllTeacher(teacherList);
 			}
 			
@@ -111,5 +111,26 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
+	
+	//================================= Option 1 View items (CRUD- Read) =================================
+		public static String retrieveAllParent(ArrayList<parent> parentList) {
+			String output = "";
+
+			for (int i = 0; i < parentList.size(); i++) {
+				
+				output += String.format("%-84s\n", parentList.get(i).toString());
+
+			}
+			return output;
+		}
+		public static void viewAllParent(ArrayList<parent> parentList) {
+			C206_CaseStudy.setHeader("PARENT LIST");
+			String output = String.format("%-10s %-30s %-10s %-10s %-20s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
+					"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO");
+			 output += retrieveAllParent(parentList);	
+			System.out.println(output);
+		}
+
+
 
 }
