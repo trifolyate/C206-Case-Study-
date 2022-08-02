@@ -22,6 +22,8 @@ public class CCACategory {
 	public void setID(int category_id) {
 		this.category_id = category_id;
 	}
+	
+	
 }
 
 
