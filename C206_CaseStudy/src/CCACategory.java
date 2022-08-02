@@ -20,7 +20,7 @@ public class CCACategory {
 		return category_id;
 	}
 	public void setID(int category_id) {
-		category_id = category_id;
+		this.category_id = category_id;
 	}
 }
 
