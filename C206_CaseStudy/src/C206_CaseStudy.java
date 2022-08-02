@@ -116,6 +116,113 @@ public class C206_CaseStudy {
 		System.out.println("5. CCA Categories");
 	}
 
+<<<<<<< HEAD
+=======
+	public static void main(String[] args) {
+		ArrayList<student> studentList = new ArrayList<student>();
+		ArrayList<parent> parentList = new ArrayList<parent>();
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+		ArrayList<CCA> CCAList = new ArrayList<CCA>();
+		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
+		
+		studentList.add(new student(1001, "John", 'B', "B101", "Mr Tan"));
+		studentList.add(new student(1002, "Max", 'C', "B102", "Mr Lim"));
+		parentList.add(new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678));
+		parentList.add(new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567));
+		
+		int option = 0;
+
+		while (option != OPTION_QUIT) {
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Enter an option > ");
+
+			if (option == OPTION_VIEW) {
+				// View all items
+				//C206_CaseStudy.viewAllStudent(studentList);
+				C206_CaseStudy.viewAllParent(parentList);
+				//C206_CaseStudy.viewAllTeacher(teacherList);
+				
+			}
+			
+			else if (option == OPTION_ADD) {
+				// Add a new item
+				C206_CaseStudy.setHeader("ADD");			
+				C206_CaseStudy.itemTypeMenu();
+				
+				int userType = Helper.readInt("Enter option to select user type > ");
+
+				if (userType == 1) {
+					// Add a student
+					//student student = inputStudent();
+					//C206_CaseStudy.addStudent(studentList, student);
+					//System.out.println("Student added");
+
+				} else if (userType == 2) {
+					// Add a parent
+					parent p = inputParent();
+					C206_CaseStudy.addParent(parentList, p);
+					System.out.println("Parent added");
+					
+				} else if (userType == 3) {
+					// Add a teacher
+					//teacher teacher = inputTeacher();
+					//C206_CaseStudy.addTeacher(teacherList, teacher);
+					//System.out.println("teacher added");
+				} else {
+					System.out.println("Invalid type");
+					}
+				}
+			
+				else if (option == OPTION_DELETE) {
+					C206_CaseStudy.setHeader("DELETE");			
+					C206_CaseStudy.itemTypeMenu();
+					
+					int userType = Helper.readInt("Enter option to select user type > ");
+
+					if (userType == 1) {
+						// Delete a student			
+						//System.out.println("Student deleted");
+
+					} else if (userType == 2) {
+						// Delete a parent	
+						parent p = inputParent();
+						C206_CaseStudy.deleteParent(parentList, p);
+						System.out.println("Parent deleted");
+						
+					} else if (userType == 3) {
+						// Delete a teacher						
+						//System.out.println("teacher deleted");
+					} else {
+						System.out.println("Invalid type");
+						}
+				
+				} 
+			
+				else if (option == OPTION_QUIT) {
+					System.out.println("Bye!");
+				}
+				else {
+					System.out.println("Invalid option");
+				}
+
+			}
+		
+		
+	}
+
+	
+
+	public static void menu() {
+		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		System.out.println("1. View user");
+		System.out.println("2. Add user");
+		System.out.println("3. Delete user");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+
+	}
+
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -142,17 +249,31 @@ public class C206_CaseStudy {
 					System.out.println("Incorrect password, please try again");
 				}
 				
+<<<<<<< HEAD
 			} else
 			{
 				System.out.println("Incorrect Student ID, please try again");
+=======
+				output += String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
+						"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO", parentList.get(i).toString());
+
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 			}
 		}
 		return situation;
 		
 		
+<<<<<<< HEAD
 	}
 	public static String retrieveAllParent(ArrayList<parent> parentList) {
 		String output = "";
+=======
+		
+		
+		//================================= Option 3 Delete an user (CRUD - Delete) =================================
+		
+		public static void deleteParent(ArrayList<parent> parentList, parent p) {
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 
 		for (int i = 0; i < parentList.size(); i++) {
 
