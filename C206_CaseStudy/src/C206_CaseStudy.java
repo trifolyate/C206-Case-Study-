@@ -13,6 +13,7 @@ public class C206_CaseStudy {
 	//C... = CCA ID 
 	//U... = Super User ID (HOD / Principal)
 	//F... = Family ID 
+	
 	public static void main(String[] args) {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
@@ -71,8 +72,8 @@ public class C206_CaseStudy {
 
 				} else if (userType == 2) {
 					// Add a parent
-					parent p = inputParent();
-					C206_CaseStudy.addParent(parentList, p);
+//					parent p = inputParent();
+//					C206_CaseStudy.addParent(parentList, p);
 					System.out.println("Parent added");
 
 				} else if (userType == 3) {
@@ -180,7 +181,7 @@ public class C206_CaseStudy {
 
 	// ================================= Option 2 Add an user (CRUD - Create)
 	// =================================
-	public static parent inputParent() {
+	public static void inputParent() {
 		String childID = Helper.readString("Enter child's ID > ");
 		String childName = Helper.readString("Enter child's name > ");
 		char grade = Helper.readChar("Enter child's grade > ");
@@ -191,8 +192,6 @@ public class C206_CaseStudy {
 		String email = Helper.readString("Enter email > ");
 		int contactNo = Helper.readInt("Enter contact number > ");
 
-		parent p = new parent(childID, childName, grade, classroom, teacher, parentName, CCAID, email, contactNo);
-		return p;
 
 	}
 
