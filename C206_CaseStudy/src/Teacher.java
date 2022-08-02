@@ -2,9 +2,10 @@ public class Teacher extends CCA{
 	public String teacher_name;
 	public String password;
 	
-	public Teacher(String cca_title, String cca_description, int cca_class_size, String cca_day_of_the_week, int time,
-			String cca_venue, String teacher_name, String password) {
-		super(cca_title, cca_description, cca_class_size, cca_day_of_the_week, time, cca_venue);
+	public Teacher(String category_title, int category_id, String cca_title, String cca_description, int cca_class_size,
+			String cca_day_of_the_week, int time, String cca_venue, String teacher_name, String password) {
+		super(category_title, category_id, cca_title, cca_description, cca_class_size, cca_day_of_the_week, time,
+				cca_venue);
 		this.teacher_name = teacher_name;
 		this.password = password;
 	}
