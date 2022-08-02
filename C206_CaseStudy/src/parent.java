@@ -5,10 +5,11 @@ public class parent extends student{
 	private String email;
 	private int contactNo;
 	
-	public parent(int ID, String name, char grade, String classroom, String teacher, String parentName, String CCAid, String email, int contactNo) {
-		super(ID, name, grade, classroom, teacher);
+	public parent(String studentID, String name, char grade, String classroom, String teacher, String parentName,
+			String cCAid, String email, int contactNo) {
+		super(studentID, name, grade, classroom, teacher);
 		this.parentName = parentName;
-		this.CCAid = CCAid;
+		CCAid = cCAid;
 		this.email = email;
 		this.contactNo = contactNo;
 	}
@@ -16,7 +17,7 @@ public class parent extends student{
 	public String toString() {
 		return String.format("%-10s %-30s %-10s %-10s", getName(), getCCAid(), getEmail(), getContact());
 	}
-	
+
 	public String getName() {
 		return parentName;
 	}
