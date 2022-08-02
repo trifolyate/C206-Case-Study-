@@ -88,6 +88,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Log in");
 		System.out.println("2. Register");
 		Helper.line(80, "-");
+		//test
 	}
 
 	public static void LoginUsersMenu() {
