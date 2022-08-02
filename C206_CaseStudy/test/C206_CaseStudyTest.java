@@ -24,10 +24,10 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
-		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
-		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
-		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
-		p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
+		s1 = new student("1001", "John", 'B', "B101", "Mr Tan");
+		s2 = new student("1002", "Max", 'C', "B102", "Mr Lim");
+		p1 = new parent("1001", "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
+		p2 = new parent("1002", "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
 
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();

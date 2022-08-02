@@ -116,6 +116,9 @@ public class C206_CaseStudy {
 		System.out.println("5. CCA Categories");
 	}
 
+	private static final int OPTION_VIEW = 1;
+	private static final int OPTION_ADD = 2;
+	private static final int OPTION_DELETE = 3;
 	public static void main1(String[] args) {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
@@ -220,7 +223,7 @@ public class C206_CaseStudy {
 	// =================================
 	public static String retrieveAllParent(ArrayList<parent> parentList) {
 		String output = "";
-=======
+		return output;}
 	
 	public static int checkParent(ArrayList<parent> parentList)
 	{
@@ -243,27 +246,48 @@ public class C206_CaseStudy {
 			} else
 			{
 				System.out.println("Incorrect Student ID, please try again");
-				output += String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
+				String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
 						"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO", parentList.get(i).toString());
-		for (int i = 0; i < parentList.size(); i++) {
+		for (int i1 = 0; i1 < parentList.size(); i1++) {
 
 			output += String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
 					"CHILD GRADE", "CHILD CLASS", "CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO",
-					parentList.get(i).toString());
+					parentList.get(i1).toString());
 
 			}
 		}
+		return situation;}
 		return situation;
 		
 	}
-	public static String retrieveAllParent(ArrayList<parent> parentList) {
-		String output = "";
-=======
-		
+	// ================================= Option 2 Add an user (CRUD - Create)
+		// =================================
+		public static parent inputParent() {
+			String childID = Helper.readString("Enter child's ID > ");
+			String childName = Helper.readString("Enter child's name > ");
+			char grade = Helper.readChar("Enter child's grade > ");
+			String classroom = Helper.readString("Enter child's class > ");
+			String teacher = Helper.readString("Enter child's teacher > ");
+			String parentName = Helper.readString("Enter parent's name > ");
+			String CCAID = Helper.readString("Enter CCA ID > ");
+			String email = Helper.readString("Enter email > ");
+			int contactNo = Helper.readInt("Enter contact number > ");
+
+			parent p = new parent(childID, childName, grade, classroom, teacher, parentName, CCAID, email, contactNo);
+			return p;
+
+		}
+
+		public static void addParent(ArrayList<parent> parentList, parent p) {
+
+			parentList.add(p);
+
+		}
 		
 		//================================= Option 3 Delete an user (CRUD - Delete) =================================
 		
-		public static void deleteParent(ArrayList<parent> parentList, parent p) {
+		public static String deleteParent(ArrayList<parent> parentList, parent p) {
+		String output = "";
 		for (int i = 0; i < parentList.size(); i++) {
 
 			output += String.format("%-84s\n", parentList.get(i).toString());
@@ -281,37 +305,6 @@ public class C206_CaseStudy {
 	}
 	// does this work?
 
-	// ================================= Option 2 Add an user (CRUD - Create)
-	// =================================
-	public static parent inputParent() {
-		String childID = Helper.readString("Enter child's ID > ");
-		String childName = Helper.readString("Enter child's name > ");
-		char grade = Helper.readChar("Enter child's grade > ");
-		String classroom = Helper.readString("Enter child's class > ");
-		String teacher = Helper.readString("Enter child's teacher > ");
-		String parentName = Helper.readString("Enter parent's name > ");
-		String CCAID = Helper.readString("Enter CCA ID > ");
-		String email = Helper.readString("Enter email > ");
-		int contactNo = Helper.readInt("Enter contact number > ");
-
-		parent p = new parent(childID, childName, grade, classroom, teacher, parentName, CCAID, email, contactNo);
-		return p;
-
-	}
-
-	public static void addParent(ArrayList<parent> parentList, parent p) {
-
-		parentList.add(p);
-
-	}
-
-	// ================================= Option 3 Delete an user (CRUD - Delete)
-	// =================================
-
-	public static void deleteParent(ArrayList<parent> parentList, parent p) {
-
-		parentList.remove(p);
-
-	}
+	
 
 }
