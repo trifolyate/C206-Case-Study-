@@ -31,30 +31,44 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testAddParent() {
-		// Item list is not null, so that can add a new item
-		assertNotNull("Test if there is valid Camcorder arraylist to add to", parentList);
+		// Item list is not null, so that can add a new parent
+		assertNotNull("Test if there is valid parent arraylist to add to", parentList);
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1
+		//Given an empty list, after adding 1 parent, the size of the list is 1
 		C206_CaseStudy.addParent(parentList, p1);		
-		assertEquals("Test if that Camcorder arraylist size is 1?", 1, parentList.size());
+		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
 		
-		//The item just added is as same as the first item of the list
-		assertSame("Test that Camcorder is added same as 1st item of the list?", p1, parentList.get(0));
+		//The parent just added is as same as the first item of the list
+		assertSame("Test that parent is added same as 1st item of the list?", p1, parentList.get(0));
 		
-		//Add another item. test The size of the list is 2?
-//		C206_CaseStudy.addCamcorder(parentList, p2);
-//		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
+		//Add another parent. test The size of the list is 2?
+		C206_CaseStudy.addParent(parentList, p2);
+		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
 	}
 	
 	@Test
 	public void testViewParent() {
 		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
+		
 		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
 		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
+		
 		assertEquals("Test if that parent arraylist size is 2?", 2, parentList.size());
 
-
+	}
+	
+	@Test
+	public void testDeleteParent() {
+		// Item list is not null, so that can delete a parent
+		assertNotNull("Test if there is valid Camcorder arraylist to add to", parentList);
+		
+		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
+		
+		C206_CaseStudy.deleteParent(parentList, p2);
+		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
 	}
 	
 

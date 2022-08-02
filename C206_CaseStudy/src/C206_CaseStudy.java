@@ -77,8 +77,10 @@ public class C206_CaseStudy {
 						//System.out.println("Student deleted");
 
 					} else if (userType == 2) {
-						// Delete a parent					
-						//System.out.println("Parent deleted");
+						// Delete a parent	
+						parent p = inputParent();
+						C206_CaseStudy.deleteParent(parentList, p);
+						System.out.println("Parent deleted");
 						
 					} else if (userType == 3) {
 						// Delete a teacher						
@@ -100,6 +102,8 @@ public class C206_CaseStudy {
 		
 		
 	}
+
+	
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
@@ -162,7 +166,12 @@ public class C206_CaseStudy {
 		}
 		
 		//================================= Option 3 Delete an user (CRUD - Delete) =================================
+		
+		public static void deleteParent(ArrayList<parent> parentList, parent p) {
 
+			parentList.remove(p);
+			
+		}
 
 
 }
