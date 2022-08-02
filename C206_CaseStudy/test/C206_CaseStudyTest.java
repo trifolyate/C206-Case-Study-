@@ -9,6 +9,8 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private parent p1;
 	private parent p2;
+	private student s1;
+	private student s2;
 	
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
@@ -20,8 +22,10 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
-//		p1 = new parent("CC0011", "Nikon HDSLR", 40);
-//		p2 = new parent("CC0012", "Sony DSC-RX100M7", 20);
+		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
+		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
+		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
+     	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
 		
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
@@ -47,7 +51,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testViewParent() {
+	public void testViewAllParent() {
 		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
 		
 		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
@@ -61,7 +65,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteParent() {
 		// Item list is not null, so that can delete a parent
-		assertNotNull("Test if there is valid Camcorder arraylist to add to", parentList);
+		assertNotNull("Test if there is valid parent arraylist to delete from", parentList);
 		
 		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
@@ -76,7 +80,11 @@ public class C206_CaseStudyTest {
 	public void tearDown() throws Exception {
 		p1 = null;
 		p2 = null;
+		s1 = null;
+		s2 = null;
 		parentList = null;
+		studentList = null;
+		teacherList = null;
 	}
 
 	
