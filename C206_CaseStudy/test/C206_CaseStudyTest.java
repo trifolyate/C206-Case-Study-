@@ -15,6 +15,8 @@ public class C206_CaseStudyTest {
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
 	ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+	ArrayList<CCA> CCAList = new ArrayList<CCA>();
+	ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -30,6 +32,9 @@ public class C206_CaseStudyTest {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+		ArrayList<CCA> CCAList = new ArrayList<CCA>();
+		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
+		
 	}
 	
 	
