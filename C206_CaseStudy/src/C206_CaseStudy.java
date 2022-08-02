@@ -33,6 +33,8 @@ public class C206_CaseStudy {
 				// View all items
 				//C206_CaseStudy.viewAllStudent(studentList);
 				C206_CaseStudy.viewAllParent(parentList);
+				C206_CaseStudy.viewAllCCA(CCAList);
+			
 				//C206_CaseStudy.viewAllTeacher(teacherList);
 				
 			}
@@ -140,6 +142,25 @@ public class C206_CaseStudy {
 			System.out.println(output);
 			return output;
 		}
+		
+		// for VIEW ALL CCA
+		public static String retrieveAllCCA(ArrayList<CCA>CCAList) {
+			String output="";
+			for (int i =0;i<CCAList.size();i++) {
+				output += String.format("%-84s\n", CCAList.get(i).toString());
+			}
+			return output;
+		}
+		public static String viewAllCCA(ArrayList<CCA> CCAList) {
+			C206_CaseStudy.setHeader("CCA LIST");
+			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "CCA TITLE", "DESCRIPTION",
+					"CLASS SIZE", "DAY OF WEEK","TIME","NAME","VENUE");
+			output +=retrieveAllCCA(CCAList);
+			System.out.println(output);
+			return output;
+			
+			
+		}
 		//does this work?
 		
 	
@@ -165,12 +186,34 @@ public class C206_CaseStudy {
 			
 		}
 		
+		// FOR ADD CCA DETIALS
+		
+		public static CCA inputCCA() {
+			String ccaTitle = Helper.readString("Enter CCA title > ");
+			String ccaDescription = Helper.readString("Enter CCA description > ");
+			int ccaClassSize = Helper.readInt("Enter CCA class size > ");
+			String ccaDay = Helper.readString("Enter CCA day of week> ");
+			int ccaTime = Helper.readInt("Enter CCA time > ");
+			String ccaVenue = Helper.readString("Enter CCA venue > ");
+			
+			CCA cca = new CCA (ccaTitle, ccaDescription, ccaClassSize, ccaDay, ccaTime, ccaVenue);
+			return cca;
+			
+		}
+		public static void addCCA(ArrayList<CCA>CCAList,CCA cca) {
+			CCAList.add(cca);
+		}
+		
+		
 		//================================= Option 3 Delete an user (CRUD - Delete) =================================
 		
 		public static void deleteParent(ArrayList<parent> parentList, parent p) {
 
 			parentList.remove(p);
 			
+		}
+		public static void deleteCCA(ArrayList<CCA>CCAList,CCA cca) {
+			CCAList.remove(cca);
 		}
 
 
