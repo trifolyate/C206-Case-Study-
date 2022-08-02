@@ -81,7 +81,7 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", studentList);
 		
-		//Given an empty lists, after adding 1 item, the size of the list is 1
+		//Given an empty list, after adding 1 item, the size of the list is 1
 		C206_CaseStudy.addStudent(studentList, s1);		
 		assertEquals("Test if that Student arraylist size is 1?", 1, studentList.size());
 		
