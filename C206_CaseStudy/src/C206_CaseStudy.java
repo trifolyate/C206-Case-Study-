@@ -23,6 +23,11 @@ public class C206_CaseStudy {
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 		
+		studentList.add(new student(1001, "John", 'B', "B101", "Mr Tan"));
+		studentList.add(new student(1002, "Max", 'C', "B102", "Mr Lim"));
+		parentList.add(new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678));
+		parentList.add(new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567));
+		
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -133,7 +138,8 @@ public class C206_CaseStudy {
 
 			for (int i = 0; i < parentList.size(); i++) {
 				
-				output += String.format("%-84s\n", parentList.get(i).toString());
+				output += String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
+						"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO", parentList.get(i).toString());
 
 			}
 			return output;
@@ -170,6 +176,8 @@ public class C206_CaseStudy {
 			parentList.add(p);
 			
 		}
+		
+		
 		
 		//================================= Option 3 Delete an user (CRUD - Delete) =================================
 		
