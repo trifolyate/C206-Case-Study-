@@ -30,7 +30,7 @@ public class C206_CaseStudyTest {
 	
 	
 	@Test
-	public void testAddCamcorder() {
+	public void testAddParent() {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", parentList);
 		
@@ -44,6 +44,17 @@ public class C206_CaseStudyTest {
 		//Add another item. test The size of the list is 2?
 //		C206_CaseStudy.addCamcorder(parentList, p2);
 //		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
+	}
+	
+	@Test
+	public void testViewParent() {
+		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
+		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
+		assertEquals("Test if that parent arraylist size is 2?", 2, parentList.size());
+
+
 	}
 	
 
