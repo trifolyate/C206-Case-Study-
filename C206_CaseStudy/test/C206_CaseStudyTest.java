@@ -90,6 +90,8 @@ public class C206_CaseStudyTest {
 		parentList = null;
 		studentList = null;
 		teacherList = null;
+		CCAList = null;
+		categoryList = null;
 	}
 
 	
