@@ -11,11 +11,8 @@ public class C206_CaseStudyTest {
 	private parent p2;
 	private student s1;
 	private student s2;
-<<<<<<< HEAD
 	private student s3;
-	//tst
-=======
->>>>>>> refs/remotes/origin/master
+
 	
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
@@ -25,22 +22,21 @@ public class C206_CaseStudyTest {
 	
 	public C206_CaseStudyTest() {
 		super();
+		//test
+		
 	}
 
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
 //		p1 = new parent("CC0011", "Nikon HDSLR", 40);
 //		p2 = new parent("CC0012", "Sony DSC-RX100M7", 20);
 		s1 = new student(1,"John",'A',"banana","ash");
 		s2 = new student(2,"bob",'B',"minions","gru");
 		s3 = new student(3,"snoopy",'C',"oo","gru");
-=======
 		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
 		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
 		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
      	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
->>>>>>> refs/remotes/origin/master
 		
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
