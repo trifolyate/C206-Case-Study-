@@ -1,4 +1,4 @@
-public class CCA {
+public class CCA extends CCACategory {
 	public String cca_title;
 	public String cca_description;
 	public int cca_class_size;
@@ -6,15 +6,8 @@ public class CCA {
 	public int time;
 	public String cca_venue;
 	
-	public CCA(String cca_title, String cca_description, int cca_class_size, String cca_day_of_the_week, int time,
-			String cca_venue) {
-		this.cca_title = cca_title;
-		this.cca_description = cca_description;
-		this.cca_class_size = cca_class_size;
-		this.cca_day_of_the_week = cca_day_of_the_week;
-		this.time = time;
-		this.cca_venue = cca_venue;
-	}
+	
+	
 
 	public String getCca_title() {
 		return cca_title;
