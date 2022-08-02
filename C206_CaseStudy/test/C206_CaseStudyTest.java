@@ -11,15 +11,19 @@ public class C206_CaseStudyTest {
 	private parent p2;
 	private student s1;
 	private student s2;
+<<<<<<< HEAD
 	private student s3;
 
 	
+=======
+
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
 	ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 	ArrayList<CCA> CCAList = new ArrayList<CCA>();
 	ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
-	
+
 	public C206_CaseStudyTest() {
 		super();
 		//test fddgfgfdgdgfdgfdgfd
@@ -28,6 +32,7 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
 //		p1 = new parent("CC0011", "Nikon HDSLR", 40);
 //		p2 = new parent("CC0012", "Sony DSC-RX100M7", 20);
 		s1 = new student(1,"John",'A',"banana","ash");
@@ -38,57 +43,68 @@ public class C206_CaseStudyTest {
 		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
      	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
 		
+=======
+		s1 = new student("1001", "John", 'B', "B101", "Mr Tan");
+		s2 = new student("1002", "Max", 'C', "B102", "Mr Lim");
+		p1 = new parent("1001", "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
+		p2 = new parent("1002", "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
+
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
-		
+
 	}
-	
-	
+
 	@Test
 	public void testAddParent() {
 		// Item list is not null, so that can add a new parent
 		assertNotNull("Test if there is valid parent arraylist to add to", parentList);
-		
-		//Given an empty list, after adding 1 parent, the size of the list is 1
-		C206_CaseStudy.addParent(parentList, p1);		
+
+		// Given an empty list, after adding 1 parent, the size of the list is 1
+		C206_CaseStudy.addParent(parentList, p1);
 		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
-		
-		//The parent just added is as same as the first item of the list
+
+		// The parent just added is as same as the first item of the list
 		assertSame("Test that parent is added same as 1st item of the list?", p1, parentList.get(0));
-		
-		//Add another parent. test The size of the list is 2?
+
+		// Add another parent. test The size of the list is 2?
 		C206_CaseStudy.addParent(parentList, p2);
 		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
 	}
+<<<<<<< HEAD
 	
 	//test 
+=======
+
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	@Test
 	public void testViewAllParent() {
 		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
-		
-		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
+
+		String registeredParent = C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
 		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
-		
+
 		assertEquals("Test if that parent arraylist size is 2?", 2, parentList.size());
 
 	}
-	
+
 	@Test
 	public void testDeleteParent() {
 		// Item list is not null, so that can delete a parent
 		assertNotNull("Test if there is valid parent arraylist to delete from", parentList);
-		
-		String registeredParent= C206_CaseStudy.viewAllParent(parentList);
+
+		String registeredParent = C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
 		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
-		
+
 		C206_CaseStudy.deleteParent(parentList, p2);
 		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
 	}
+<<<<<<< HEAD
 	@Test
 	public void testAddStudent() {
 		// Item list is not null, so that can add a new item
@@ -134,6 +150,8 @@ public class C206_CaseStudyTest {
 	
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 
 	@After
 	public void tearDown() throws Exception {
@@ -147,9 +165,5 @@ public class C206_CaseStudyTest {
 		CCAList = null;
 		categoryList = null;
 	}
-
-	
-	
-	
 
 }

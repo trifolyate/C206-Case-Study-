@@ -65,6 +65,4 @@ public class CCA extends CCACategory {
 		this.cca_venue = cca_venue;
 	}
 
-	
-	
 }
