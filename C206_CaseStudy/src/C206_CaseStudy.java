@@ -47,9 +47,9 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// Add a parent
-					//parent parent = inputParent();
-					//C206_CaseStudy.addParent(parentList, parent);
-					//System.out.println("Parent added");
+					parent p = inputParent();
+					C206_CaseStudy.addParent(parentList, p);
+					System.out.println("Parent added");
 					
 				} else if (itemType == 3) {
 					// Add a teacher
@@ -133,17 +133,24 @@ public class C206_CaseStudy {
 		//does this work?
 	
 		//================================= Option 2 Add an item (CRUD - Create) =================================
-		//public static parent inputParent() {
-			//String tag = Helper.readString("Enter asset tag > ");
-			
+		public static parent inputParent() {
+			int childID = Helper.readInt("Enter child's ID > ");
+			String childName = Helper.readString("Enter child's name > ");
+			char grade = Helper.readChar("Enter child's grade > ");
+			String classroom = Helper.readString("Enter child's class > ");
+			String teacher = Helper.readString("Enter child's teacher > ");
+			String parentName = Helper.readString("Enter parent's name > ");
+			String CCAID = Helper.readString("Enter CCA ID > ");
+			String email = Helper.readString("Enter email > ");
+			int contactNo = Helper.readInt("Enter contact number > ");
 
-			//parent Parent= new parent(tag);
-			//return Parent;
+			parent p = new parent(childID, childName, grade, classroom, teacher, parentName, CCAID, email, contactNo);
+			return p;
 			
-		//}
-		public static void addParent(ArrayList<parent> parentList, parent parent) {
+		}
+		public static void addParent(ArrayList<parent> parentList, parent p) {
 			
-			//parentList.add(parent);
+			parentList.add(p);
 			
 		}
 		
