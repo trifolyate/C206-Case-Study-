@@ -130,7 +130,7 @@ public class C206_CaseStudy {
 		}
 		public static String viewAllParent(ArrayList<parent> parentList) {
 			C206_CaseStudy.setHeader("PARENT LIST");
-			String output = String.format("%-10s %-30s %-10s %-10s %-20s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
+			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
 					"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO");
 			 output += retrieveAllParent(parentList);	
 			System.out.println(output);
