@@ -46,7 +46,7 @@ public class C206_CaseStudyTest {
 		//Add another item. test The size of the list is 2?
 //		C206_CaseStudy.addCamcorder(parentList, p2);
 //		C206_CaseStudy.addCamcorder(parentList, p3);
-//		assertEquals("Test that parent arraylist size is 3?", 3, parentList.size());
+//		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
 //		assertSame("Test that parent is added same as 3rd item of the list?", p3, parentList.get(2));
 	}
 	

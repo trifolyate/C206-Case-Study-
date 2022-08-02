@@ -42,21 +42,21 @@ public class C206_CaseStudy {
 				C206_CaseStudy.setHeader("ADD");			
 				C206_CaseStudy.itemTypeMenu();
 				
-				int itemType = Helper.readInt("Enter option to select user type > ");
+				int userType = Helper.readInt("Enter option to select user type > ");
 
-				if (itemType == 1) {
+				if (userType == 1) {
 					// Add a student
 					//student student = inputStudent();
 					//C206_CaseStudy.addStudent(studentList, student);
 					//System.out.println("Student added");
 
-				} else if (itemType == 2) {
+				} else if (userType == 2) {
 					// Add a parent
 					parent p = inputParent();
 					C206_CaseStudy.addParent(parentList, p);
 					System.out.println("Parent added");
 					
-				} else if (itemType == 3) {
+				} else if (userType == 3) {
 					// Add a teacher
 					//teacher teacher = inputTeacher();
 					//C206_CaseStudy.addTeacher(teacherList, teacher);
@@ -70,17 +70,17 @@ public class C206_CaseStudy {
 					C206_CaseStudy.setHeader("DELETE");			
 					C206_CaseStudy.itemTypeMenu();
 					
-					int itemType = Helper.readInt("Enter option to select user type > ");
+					int userType = Helper.readInt("Enter option to select user type > ");
 
-					if (itemType == 1) {
+					if (userType == 1) {
 						// Delete a student			
 						//System.out.println("Student deleted");
 
-					} else if (itemType == 2) {
+					} else if (userType == 2) {
 						// Delete a parent					
 						//System.out.println("Parent deleted");
 						
-					} else if (itemType == 3) {
+					} else if (userType == 3) {
 						// Delete a teacher						
 						//System.out.println("teacher deleted");
 					} else {
