@@ -11,7 +11,7 @@ public class C206_CaseStudy {
 		ArrayList<parent> parentList = new ArrayList<parent>();
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
-		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
+		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>(); 
 
 		int option = 0;
 
