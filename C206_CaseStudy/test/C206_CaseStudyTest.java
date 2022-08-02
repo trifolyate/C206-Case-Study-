@@ -12,6 +12,7 @@ public class C206_CaseStudyTest {
 	private student s1;
 	private student s2;
 	private student s3;
+	//tst
 	
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
