@@ -64,6 +64,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
 	}
 	
+	//test 
 	@Test
 	public void testViewAllParent() {
 		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
