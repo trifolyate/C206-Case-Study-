@@ -12,12 +12,16 @@ public class C206_CaseStudy {
 		System.out.println("1. Parent");
 		System.out.println("2. Student");
 		System.out.println("3. Teacher");
+		System.out.println("4. CCA");
+		System.out.println("5. CCA Categories");
 	}
 
 	public static void main(String[] args) {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+		ArrayList<CCA> CCAList = new ArrayList<CCA>();
+		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 		
 		int option = 0;
 
@@ -30,6 +34,7 @@ public class C206_CaseStudy {
 				//C206_CaseStudy.viewAllStudent(studentList);
 				C206_CaseStudy.viewAllParent(parentList);
 				//C206_CaseStudy.viewAllTeacher(teacherList);
+				
 			}
 			
 			else if (option == OPTION_ADD) {
@@ -112,7 +117,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 	
-	//================================= Option 1 View items (CRUD- Read) =================================
+	//================================= Option 1 View users (CRUD- Read) =================================
 		public static String retrieveAllParent(ArrayList<parent> parentList) {
 			String output = "";
 
@@ -132,7 +137,7 @@ public class C206_CaseStudy {
 		}
 		//does this work?
 	
-		//================================= Option 2 Add an item (CRUD - Create) =================================
+		//================================= Option 2 Add an user (CRUD - Create) =================================
 		public static parent inputParent() {
 			int childID = Helper.readInt("Enter child's ID > ");
 			String childName = Helper.readString("Enter child's name > ");
@@ -154,7 +159,7 @@ public class C206_CaseStudy {
 			
 		}
 		
-		//================================= Option 3 Delete an item (CRUD - Delete) =================================
+		//================================= Option 3 Delete an user (CRUD - Delete) =================================
 
 
 
