@@ -248,7 +248,7 @@ public class sruthi {
 		//test cases
 		
 }
-/////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	// ADD CCA details
 //	@Test
@@ -318,8 +318,6 @@ public class sruthi {
 //	}
 //	
 //
-//
-//
 //	@After
 //	public void tearDown() throws Exception {
 //		
@@ -327,9 +325,6 @@ public class sruthi {
 //		cca2=null;
 //		CCAList = null;
 //
-//
-//		studentList = null;
-//		teacherList = null;
 //		CCAList = null;
 //		categoryList = null;
 //>>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
