@@ -206,6 +206,7 @@ public class sruthi {
 //			//return p;
 //			
 //		}
+		//
 		public static void addParent(ArrayList<parent> parentList, parent p) {
 			
 			parentList.add(p);
@@ -247,88 +248,7 @@ public class sruthi {
 		//test cases
 		
 }
-// test cases for the cca add view and delete.
-//import static org.junit.Assert.*;
-//
-//import java.util.ArrayList;
-//
-//import org.junit.After;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//public class C206_CaseStudyTest {
-//	private parent p1;
-//	private parent p2;
-//	private student s1;
-//	private student s2;
-//
-//	private student s3;
-//
-//	
-//
-//	private CCA cca1;
-//	private CCA cca2;
-//	
-//	private ArrayList<CCA> CCAList;
-//	private ArrayList<parent>parentList;
-//	
-//	//ArrayList<student> studentList = new ArrayList<student>();
-//	//ArrayList<parent> parentList = new ArrayList<parent>();
-//	//ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-//	//ArrayList<CCA> CCAList = new ArrayList<CCA>();
-//	
-//   
-//
-////	ArrayList<student> studentList = new ArrayList<student>();
-////	ArrayList<parent> parentList = new ArrayList<parent>();
-////	ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-////	ArrayList<CCA>CCAList = new ArrayList<CCA>();
-////	ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
-//
-//	public C206_CaseStudyTest() {
-//		super();
-//		
-//		
-//	}
-//
-//	@Before
-//	public void setUp() throws Exception {
-////		p1 = new parent("CC0011", "Nikon HDSLR", 40);
-////		p2 = new parent("CC0012", "Sony DSC-RX100M7", 20);
-//		
-//		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
-//		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
-//		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
-//     	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
-//		
-//
-//		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
-//		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
-//		
-//		
-//		//ArrayList<student> studentList = new ArrayList<student>();
-//		//ArrayList<parent> parentList = new ArrayList<parent>();
-//		//ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-//		//ArrayList<CCA> CCAList = new ArrayList<CCA>();
-//		CCAList = new ArrayList<CCA>();
-//		parentList=new ArrayList<parent>();
-//
-//		s1 = new student("1001", "John", 'B', "B101", "Mr Tan");
-//		s2 = new student("1002", "Max", 'C', "B102", "Mr Lim");
-//		p1 = new parent("1001", "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
-//		p2 = new parent("1002", "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
-//
-//
-//		ArrayList<student> studentList = new ArrayList<student>();
-//		ArrayList<parent> parentList = new ArrayList<parent>();
-//		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-//		ArrayList<CCA> CCAList = new ArrayList<CCA>();
-//		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
-//
-//
-//	}
-//
-//	
+/////////////////////////////////////////////
 //
 //	// ADD CCA details
 //	@Test
@@ -380,35 +300,7 @@ public class sruthi {
 //			
 //		}
 //
-//	@Test
-//	public void testDeleteParent() {
-//		// Item list is not null, so that can delete a parent
-//		assertNotNull("Test if there is valid parent arraylist to delete from", parentList);
-//
-//		String registeredParent = C206_CaseStudy.viewAllParent(parentList);
-//		String testOutput = "";
-//		assertEquals("Check that ViewAllParentlist", testOutput, registeredParent);
-//
-//		C206_CaseStudy.deleteParent(parentList, p2);
-//		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
-//	}
-//
 //	
-//	
-//	@Test
-//	public void testDeleteStudent() {
-//		// Item list is not null, so that can delete a parent
-//		assertNotNull("Test if there is valid Student arraylist to add to", studentList);
-//		
-//		String Students= C206_CaseStudy.viewAllStudent(studentList);
-//		String testOutput = "";
-//		assertEquals("Check that ViewAllStudentlist", testOutput, Students);
-//		
-//		C206_CaseStudy.deleteStudent(studentList, s2);
-//		assertEquals("Test if that student arraylist size is 1?", 1, studentList.size());
-//	}
-//	
-//
 //
 //	//Delete CCA
 //	@Test
@@ -430,13 +322,6 @@ public class sruthi {
 //
 //	@After
 //	public void tearDown() throws Exception {
-//		p1 = null;
-//		p2 = null;
-//		s1 = null;
-//		s2 = null;
-//		parentList = null;
-//
-//
 //		
 //		cca1= null;
 //		cca2=null;
