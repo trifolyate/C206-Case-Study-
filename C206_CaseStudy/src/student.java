@@ -1,27 +1,27 @@
 
-public class student extends parent {
+public class student extends parent { // for P3 and below
 	private String studentID;
 	private String name;
-	private char grade;
+	private int grade;
 	private String classroom;
 	private String teacher;
+	private String CCAID;
 	private String CCA1;
 	private String CCA2;
 	private String CCA3;
-	// in case have two child, same family ID means belongs to the parent, so when
-	// logging in, can choose which student will the parent use
 
-	public student(String parentName, String cCAid, String email, int contactNo, String studentID, String name,
-			char grade, String classroom, String teacher, String CCA1, String CCA2, String CCA3) {
-		super(parentName, cCAid, email, contactNo);
+	public student(String parentName, String email, int contactNo, int familyId, String studentID, String name,
+			int grade, String classroom, String teacher, String cCAID, String cCA1, String cCA2, String cCA3) {
+		super(parentName, email, contactNo, familyId);
 		this.studentID = studentID;
 		this.name = name;
 		this.grade = grade;
 		this.classroom = classroom;
 		this.teacher = teacher;
-		this.CCA1 = CCA1;
-		this.CCA2 = CCA2;
-		this.CCA3 = CCA3;
+		CCAID = cCAID;
+		CCA1 = cCA1;
+		CCA2 = cCA2;
+		CCA3 = cCA3;
 	}
 
 	public String getStudentID() {
@@ -40,11 +40,11 @@ public class student extends parent {
 		this.name = name;
 	}
 
-	public char getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
-	public void setGrade(char grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 
@@ -62,6 +62,14 @@ public class student extends parent {
 
 	public void setTeacher(String teacher) {
 		this.teacher = teacher;
+	}
+
+	public String getCCAID() {
+		return CCAID;
+	}
+
+	public void setCCAID(String cCAID) {
+		CCAID = cCAID;
 	}
 
 	public String getCCA1() {
@@ -89,7 +97,7 @@ public class student extends parent {
 	}
 
 	public String toMainStudentString() {
-		return "\nStudent ID: " + studentID + "\n Student Name: " + name + "\n Grade(Latest): " + grade + "\n Classroom: "
+		return "\nStudent ID: " + studentID + "\n Student Name: " + name + "\n Grade: " + grade + "\n Classroom: "
 				+ classroom + "\n Teacher:" + teacher + "\n";
 	}
 
@@ -104,7 +112,24 @@ public class student extends parent {
 
 				}
 			}
-		}else {
+		} else {
+			System.out.print(String.format(" %s has not registered for any CCA.", name));
+		}
+		return result;
+	}
+	
+	public String toStudentCCASpecialString() {
+		String result = "";
+		if (!this.CCA1.isEmpty()) {
+			System.out.print(String.format(" (1) CCA 1: %s", getCCA1()));
+			if (!this.CCA2.isEmpty()) {
+				System.out.print(String.format("\n (2) CCA 2: %s", getCCA2()));
+				if (!this.CCA3.isEmpty()) {
+					System.out.print(String.format("\n (3) CCA 3: %s", getCCA3()));
+
+				}
+			}
+		} else {
 			System.out.print(String.format(" %s has not registered for any CCA.", name));
 		}
 		return result;

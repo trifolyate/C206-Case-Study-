@@ -18,11 +18,11 @@ public class CCACategory {
 		this.category_title = category_title;
 	}
 
-	public int getID() {
+	public int getcat_ID() {
 		return category_id;
 	}
 
-	public void setID(int category_id) {
+	public void setcat_ID(int category_id) {
 		this.category_id = category_id;
 	}
 	// test

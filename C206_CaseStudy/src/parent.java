@@ -1,16 +1,29 @@
 public class parent {
 
 	private String parentName;
-	private String CCAid;
 	private String email;
 	private int contactNo;
+	private int familyId;
 
-	public parent(String parentName, String cCAid, String email, int contactNo) {
+	
+
+	public parent(String parentName, String email, int contactNo, int familyId) {
 		this.parentName = parentName;
-		CCAid = cCAid;
 		this.email = email;
 		this.contactNo = contactNo;
+		this.familyId = familyId;
 	}
+
+
+	public int getFamilyId() {
+		return familyId;
+	}
+
+
+	public void setFamilyId(int familyId) {
+		this.familyId = familyId;
+	}
+
 
 	public String getParentName() {
 		return parentName;
@@ -18,14 +31,6 @@ public class parent {
 
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
-	}
-
-	public String getCCAid() {
-		return CCAid;
-	}
-
-	public void setCCAid(String cCAid) {
-		CCAid = cCAid;
 	}
 
 	public String getEmail() {
