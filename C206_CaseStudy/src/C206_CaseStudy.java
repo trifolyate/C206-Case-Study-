@@ -28,6 +28,10 @@ public class C206_CaseStudy {
 				"CCA1", "CCA2", ""));
 		studentList.add(new student("Ash 4", "ash@gmail.com", 1234, 3, "S987", "Ash Kid 4", 6, "6B", "Teacher", "C987",
 				"CCA1", "CCA2", "CCA3"));
+		parentList.add(new parent("Ash Parent 1", "ash@gmail.com", 1234, 1));
+		parentList.add(new parent("Ash Parent 2", "ash@gmail.com", 1234, 2));
+		parentList.add(new parent("Ash 3", "ash@gmail.com", 1234, 2));
+		parentList.add(new parent("Ash 4", "ash@gmail.com", 1234, 3));
 		CCAList.add(new CCA("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Monday", "3:00PM-4:00PM", "Field"));
@@ -137,13 +141,13 @@ public class C206_CaseStudy {
 
 				if (userType == 1) {
 					// Add a student
-					// student student = inputStudent();
-					// C206_CaseStudy.addStudent(studentList, student);
-					// System.out.println("Student added");
+//					 student student = inputStudent();
+	//				 C206_CaseStudy.addStudent(studentList, student);
+					 System.out.println("Student added");
 
 				} else if (userType == 2) {
 					// Add a parent
-//					parent p = inputParent();
+		//			parent p = inputParent();
 //					C206_CaseStudy.addParent(parentList, p);
 					System.out.println("Parent added");
 
@@ -151,7 +155,7 @@ public class C206_CaseStudy {
 					// Add a teacher
 					// teacher teacher = inputTeacher();
 					// C206_CaseStudy.addTeacher(teacherList, teacher);
-					// System.out.println("teacher added");
+					 System.out.println("teacher added");
 				} else {
 					System.out.println("Invalid type");
 				}
