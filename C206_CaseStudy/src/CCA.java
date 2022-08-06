@@ -75,9 +75,15 @@ public class CCA extends CCACategory {
 		this.cca_venue = cca_venue;
 	}
 	
-	public String toStringSpecial() {
+	public String toStringCCASpecial() {
 		String result = String.format("\nCCA TITLE: %s\nCCA DESCRIPTION: %s\nCLASS SIZE: %s\nDAY OF THE WEEK: %s\nTIME: %s\nCCA VENUE: %s\n", this.cca_title,this.cca_description,
 				this.cca_class_size, this.cca_day_of_the_week, this.time, this.cca_venue);
+		return result;
+	}
+	
+	public String toStringCCASpecialwithOptions() {
+		String result = String.format("\n (1) CCA TITLE: %s\n (2) CCA DESCRIPTION: %s\n (3) DAY OF THE WEEK: %s\n     TIME: %s\n (4) CCA VENUE: %s\n", this.cca_title,this.cca_description,
+				this.cca_day_of_the_week, this.time, this.cca_venue);
 		return result;
 	}
 	

@@ -21,23 +21,30 @@ public class C206_CaseStudy {
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 
 		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 1234, 1, "S123", "Ash Kid 1", 3, "3A", "MS THAMMY",
-				"C123", "CCA1", "", ""));
+				"C123", "Soccer", "", ""));
 		studentList.add(new student("Ash Parent 2", "ash@gmail.com", 1234, 2, "S456", "Ash Kid 2", 4, "4F", "Teacher",
-				"C456", "CCA1", "CCA2", "CCA3"));
+				"C456", "Soccer", "CCA2", "CCA3"));
 		studentList.add(new student("Ash 3", "ash@gmail.com", 1234, 2, "S789", "Ash Kid 3", 3, "3D", "Teacher", "C789",
 				"CCA1", "CCA2", ""));
 		studentList.add(new student("Ash 4", "ash@gmail.com", 1234, 3, "S987", "Ash Kid 4", 6, "6B", "Teacher", "C987",
 				"CCA1", "CCA2", "CCA3"));
 		CCAList.add(new CCA("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
-				2, "Monday", "3:00PM- 4:00PM", "Field"));
+				2, "Monday", "3:00PM-4:00PM", "Field"));
 		CCAList.add(new CCA("Clubs & Societies", 2, 2, "Boy Scouts",
 				" an organization for boys that encourages them to take part in activities outside and to become responsible and independent.",
-				20, "Tuesday", "3:00PM- 4:00PM", "Field"));
+				20, "Tuesday", "3:00PM-4:00PM", "Field"));
 		CCAList.add(new CCA("Sports", 1, 3, "Soccer2",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
-				2, "Monday", "3:00PM- 4:00PM", "Field"));
-
+				2, "Monday", "Lunch Break", "Field"));
+		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
+				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
+				2, "Wednesday", "Lunch Break", "Field", "T123", "Mr. Ash", "apple"));
+		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
+				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
+				2, "Wedesday", "3:00PM- 4:00PM", "Field", "T321", "Mr. Ash1", "apple1"));
+		categoryList.add(new CCACategory("Sports", 1));
+		categoryList.add(new CCACategory("Clubs & Societies", 2));
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -55,39 +62,65 @@ public class C206_CaseStudy {
 					C206_CaseStudy.LoginMenu();
 					studentPositionInList = C206_CaseStudy.findStudentPositioninList(studentList);
 					if (studentPositionInList != -1) {
-						System.out.print("\n");
-						C206_CaseStudy.setHeader("Student CCA Page");
-						int focusStudentposition = -1;
-						focusStudentposition = chooseCorrectStudent(studentList, studentPositionInList);
-						String studentOption = "";
-						studentOption = studentChoices(studentList, focusStudentposition);// studentChoices
-						if (studentOption.equals("1")) // add student CCA //using SRUTHI CODES
-						{
-							C206_CaseStudy.setHeader("Student Add CCA Page");
+						boolean loop = true;
+						while (loop == true) {
+							System.out.print("\n");
+							C206_CaseStudy.setHeader("Student CCA Page");
+							int focusStudentposition = -1;
+							focusStudentposition = chooseCorrectStudent(studentList, studentPositionInList);
+							String studentOption = "";
+							studentOption = studentChoices(studentList, focusStudentposition);// studentChoices
+							if (studentOption.equals("1")) // add student CCA //using SRUTHI CODES
+							{
+								C206_CaseStudy.setHeader("Student Add CCA Page");
 
-							addCCALoginStudent(CCAList, focusStudentposition,studentList);
-							// method to list all CCA(CCA Name plus CCA Description) and ask the user to
-							// choose which CCA
-							// after CCA is chosen, it will take in the CCA Name and add it in inside the
-							// student object, (example Student1 CCA1 = "Soccer") etc // brings user back to
-							// student CCA page
-						} else if (studentOption.equals("2")) { // remove cca
-							C206_CaseStudy.setHeader("Student Remove CCA Page");
-							removeCCALoginStudent(studentList, focusStudentposition);
-						} else if (studentOption.equals("3")) {
-							// make this empty to bring user to Main Menu
+								addCCALoginStudent(CCAList, focusStudentposition, studentList, teacherList);
+							} else if (studentOption.equals("2")) { // remove cca
+								C206_CaseStudy.setHeader("Student Remove CCA Page");
+								removeCCALoginStudent(studentList, focusStudentposition);
+							} else if (studentOption.equals("3")) {
+								loop = false;
+								// make this empty to bring user to Main Menu
+							}
 						}
-						// options such as add student to CCA or drop them from CCA, also the view after
-						// logging in should show the current student details and the CCA details that
-						// he has joined.
 					}
 				} else if (userOption == 2) {
-					System.out.println("");
+					System.out.print("\n");
 					C206_CaseStudy.LoginMenu();
-					String username = "";
-					String password = "";
-					username = Helper.readString("Enter Username > ");
-					password = Helper.readString("Enter password > ");
+					int teacherPositionInList = 0;
+					teacherPositionInList = findTeacherPositionInList(teacherList);
+					if (teacherPositionInList != -1) {
+						System.out.print("\n");
+						C206_CaseStudy.setHeader("Teacher CCA Page");
+						boolean loop = true;
+						while (loop == true) {
+							int teacherOption = teacherChoices(CCAList, teacherList, teacherPositionInList);
+							if (teacherOption == 1) // view students inside CCA
+							{
+								System.out.print("\n");
+								Helper.line(80, "-");
+								System.out.print(
+										studentsInsideCCA(studentList, CCAList, teacherList, teacherPositionInList));
+								Helper.line(80, "-");
+							} else if (teacherOption == 2) // View CCA Details
+							{
+								System.out.print("\n");
+								Helper.line(80, "-");
+								System.out.print(teacherList.get(teacherPositionInList).toStringCCASpecial());
+								System.out.print("\n");
+								Helper.line(80, "-");
+							} else if (teacherOption == 3) // Edit CCA Details
+							{
+								System.out.print("\n");
+								Helper.line(80, "-");
+								editCCADetails(CCAList, teacherList, studentList, teacherPositionInList);
+								Helper.line(80, "-");
+							} else {
+								loop = false;
+								System.out.print(teacherOption);
+							}
+						}
+					}
 
 				} else if (userOption == 3) {
 
@@ -190,39 +223,47 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static void addCCALoginStudent(ArrayList<CCA> list, int StudentListPosition, ArrayList<student> studentlist) {
+	public static void addCCALoginStudent(ArrayList<CCA> list, int StudentListPosition, ArrayList<student> studentlist,
+			ArrayList<Teacher> teacherList) {
 		viewAllCCA(list);
 		int CCAposition = -1;
 		int ccaChoice = Helper.readInt("Enter CCA ID : ");
-		for(int i = 0; i < list.size();i++)
-		{
-			if(list.get(i).getCca_id() == ccaChoice)
-			{
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getCca_id() == ccaChoice) {
 				CCAposition = i;
-				System.out.print(list.get(i).toStringSpecial());
+				System.out.print(list.get(i).toStringCCASpecial());
 				System.out.print("\n");
 			}
 		}
 		char finalChoice = Helper.readChar("Register for this CCA?(Y or N): ");
-		if(finalChoice == 'Y' || finalChoice == 'y')
-		{
-			if(studentlist.get(StudentListPosition).getCCA1().isEmpty())
-			{
+		if (finalChoice == 'Y' || finalChoice == 'y') {
+			if (studentlist.get(StudentListPosition).getCCA1().isEmpty()) {
 				studentlist.get(StudentListPosition).setCCA1(list.get(CCAposition).getCca_title());
 				int size = list.get(CCAposition).getCca_class_size();
-				System.out.print(size);
-				list.get(CCAposition).setCca_class_size(size+1);
-				System.out.print(size+1);
-			} else if(studentlist.get(StudentListPosition).getCCA2().isEmpty())
-			{
+				list.get(CCAposition).setCca_class_size(size + 1);
+				for (int i = 1; i < teacherList.size(); i++) {
+					if (list.get(CCAposition).getCca_id() == teacherList.get(i).getCca_id()) {
+						teacherList.get(i).setCca_class_size(size);
+					}
+				}
+			} else if (studentlist.get(StudentListPosition).getCCA2().isEmpty()) {
 				studentlist.get(StudentListPosition).setCCA2(list.get(CCAposition).getCca_title());
 				int size = list.get(CCAposition).getCca_class_size();
-				list.get(CCAposition).setCca_class_size(size+1);
-			}else if(studentlist.get(StudentListPosition).getCCA3().isEmpty())
-			{
+				list.get(CCAposition).setCca_class_size(size + 1);
+				for (int i = 1; i < teacherList.size(); i++) {
+					if (list.get(CCAposition).getCca_id() == teacherList.get(i).getCca_id()) {
+						teacherList.get(i).setCca_class_size(size);
+					}
+				}
+			} else if (studentlist.get(StudentListPosition).getCCA3().isEmpty()) {
 				studentlist.get(StudentListPosition).setCCA3(list.get(CCAposition).getCca_title());
 				int size = list.get(CCAposition).getCca_class_size();
-				list.get(CCAposition).setCca_class_size(size+1);
+				list.get(CCAposition).setCca_class_size(size + 1);
+				for (int i = 1; i < teacherList.size(); i++) {
+					if (list.get(CCAposition).getCca_id() == teacherList.get(i).getCca_id()) {
+						teacherList.get(i).setCca_class_size(size);
+					}
+				}
 			}
 		}
 
@@ -374,7 +415,6 @@ public class C206_CaseStudy {
 			String username = "";
 			String password = "";
 			String input = "";
-
 			username = Helper.readString("Enter Student ID(enter 'exit' to go back to main menu) > ");
 			if (username.equalsIgnoreCase("exit")) {
 				loop = false;
@@ -418,18 +458,18 @@ public class C206_CaseStudy {
 			}
 
 		}
-	return position;
+		return position;
 	}
 
-	public static String retrieveCCADetails(ArrayList<CCA> CCAList,int ccaID) {
+	public static String retrieveCCADetails(ArrayList<CCA> CCAList, int ccaID) {
 		String output = "";
 		for (int i = 0; i < CCAList.size(); i++) {
-			if(CCAList.get(i).getCca_id() == ccaID)
-			output += String.format("Test");
+			if (CCAList.get(i).getCca_id() == ccaID)
+				output += String.format("Test");
 		}
 		return output;
 	}
-	
+
 	public static String retrieveAllCCA(ArrayList<CCA> CCAList) {
 		String output = "";
 		for (int i = 0; i < CCAList.size(); i++) {
@@ -448,6 +488,239 @@ public class C206_CaseStudy {
 		System.out.print("\n");
 		return output;
 
+	}
+
+	public static int findTeacherPositionInList(ArrayList<Teacher> teacherList) {
+		int teacherPosition = -1;
+		boolean loop = true;
+		while (loop == true) {
+
+			String username = "";
+			String password = "";
+			String input = "";
+			boolean foundUsername = false;
+			username = Helper.readString("Enter Staff ID(enter 'exit' to go back to main menu) > ");
+			if (username.equalsIgnoreCase("exit")) {
+				loop = false;
+				return teacherPosition;
+			}
+			password = Helper.readString("Enter Password > ");
+
+			for (int i = 0; i < teacherList.size(); i++) {
+				if (teacherList.get(i).getStaffId().equals(username)) {
+					foundUsername = true;
+					if (teacherList.get(i).getPassword().equals(password)) {
+						teacherPosition = i;
+						loop = false;
+					}
+				}
+			}
+			if (foundUsername == false) {
+				input += "Incorrect Staff ID / Password, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			} else if (foundUsername == true && teacherPosition == -1) {
+				input += "Incorrect Staff ID, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			}
+
+		}
+		return teacherPosition;
+	}
+
+	public static int teacherChoices(ArrayList<CCA> ccalist, ArrayList<Teacher> teacherlist, int teacherPosition) {
+		int choice = -1;
+		boolean loop = true;
+		System.out.print("\n");
+		System.out.print(String.format("WELCOME, %s", teacherlist.get(teacherPosition).getTeacher_name()));
+		System.out.print("\n");
+		while (loop == true) {
+			System.out.print(
+					String.format("\n (1) View Students inside %s\n", teacherlist.get(teacherPosition).getCca_title()));
+			System.out.print(String.format(" (2) View %s Details\n", teacherlist.get(teacherPosition).getCca_title()));
+			System.out.print(String.format(" (3) Edit %s Details\n", teacherlist.get(teacherPosition).getCca_title()));
+			System.out.print(" (4) Exit\n\n");
+			int teacherchoice = Helper.readInt("Select an option (1,2, or 3): ");
+			if (teacherchoice == 1 || teacherchoice == 2 || teacherchoice == 3) {
+				choice = teacherchoice;
+				loop = false;
+//				break;
+			} else {
+				String input = "Incorrect Option, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			}
+		}
+		return choice;
+	}
+
+	public static String studentsInsideCCA(ArrayList<student> slist, ArrayList<CCA> clist, ArrayList<Teacher> tlist,
+			int tposition) {
+		String output = "";
+		output += String.format("CCA NAME: %s\n\n", tlist.get(tposition).getCca_title());
+		int number = 0;
+		for (int i = 0; i < slist.size(); i++) {
+			if (tlist.get(tposition).getCca_title().equals(slist.get(i).getCCA1())
+					|| tlist.get(tposition).getCca_title().equals(slist.get(i).getCCA2())
+					|| tlist.get(tposition).getCca_title().equals(slist.get(i).getCCA3())) {
+				number += 1;
+				output += String.format("(%d) %-15s %-10s\n", number, slist.get(i).getName(),
+						slist.get(i).getClassroom());
+			}
+		}
+
+		return output;
+	}
+
+	public static void editCCADetails(ArrayList<CCA> ccalist, ArrayList<Teacher> teacherlist,
+			ArrayList<student> studentlist, int teacherPosition) {
+		boolean loop = true;
+		while (loop == true) {
+			String information = String.format("%s", teacherlist.get(teacherPosition).toStringCCASpecialwithOptions());
+			information += " (5) Exit\n\n";
+			System.out.print(information);
+			int updateChoice = Helper.readInt("Choose an option to change the details(1-5): ");
+			if (updateChoice == 1) {
+				System.out.print(String.format("\nCCA TITLE: %s\n", teacherlist.get(teacherPosition).getCca_title()));
+				String updatedTitle = Helper.readString("Enter New Title: ");
+				boolean loop1 = true;
+				while (loop1 == true) {
+					char confirm = Helper.readChar("\nConfirm (Y or N)? : ");
+					if (confirm == 'Y' || confirm == 'y') {
+						for(int i = 0;i < studentlist.size();i++)
+						{
+							if(studentlist.get(i).getCCA1().equals(teacherlist.get(teacherPosition).getCca_title())) {
+								studentlist.get(i).setCCA1(updatedTitle);
+							} else if(studentlist.get(i).getCCA2().equals(teacherlist.get(teacherPosition).getCca_title())) {
+								studentlist.get(i).setCCA2(updatedTitle);
+							} else if(studentlist.get(i).getCCA3().equals(teacherlist.get(teacherPosition).getCca_title())) {
+								studentlist.get(i).setCCA3(updatedTitle);
+							}
+						}
+						teacherlist.get(teacherPosition).setCca_title(updatedTitle);
+						loop1 = false;
+					} else if (confirm == 'N' || confirm == 'n') {
+						loop1 = false;
+					} else {
+						System.out.print("Incorrect Input, Please Try again\n\n");
+					}
+				}
+			} else if (updateChoice == 2) {
+				System.out.print(
+						String.format("\nCCA DESCIPTION: %s\n", teacherlist.get(teacherPosition).getCca_description()));
+				String updatedDescription = Helper.readString("Enter New Description: ");
+				boolean loop1 = true;
+				while (loop1 == true) {
+					char confirm = Helper.readChar("\nConfirm (Y or N)? : ");
+					if (confirm == 'Y' || confirm == 'y') {
+						teacherlist.get(teacherPosition).setCca_description(updatedDescription);
+						;
+						loop1 = false;
+					} else if (confirm == 'N' || confirm == 'n') {
+						loop1 = false;
+					} else {
+						System.out.print("Incorrect Input, Please Try again\n\n");
+					}
+				}
+
+			} else if (updateChoice == 3) {
+				System.out.print(String.format("\nCCA DAY OF THE WEEK: %s\nCCA TIME: %s\n",
+						teacherlist.get(teacherPosition).getCca_day_of_the_week(),
+						teacherlist.get(teacherPosition).getTime()));
+				String updatedDay = "";
+				String updatedTime = "";
+				boolean complete1 = false;
+				while (complete1 == false) {
+					int updatedDayInteger = Helper.readInt(
+							"\nEnter New Day of the Week \n( 1 - Monday , 2 - Tuesday, 3 - Wednesday, 4 - Thursday, 5 - Friday ): ");
+					if (updatedDayInteger == 1) {
+						updatedDay = "Monday";
+						complete1 = true;
+					} else if (updatedDayInteger == 2) {
+						updatedDay = "Tuesday";
+						complete1 = true;
+					} else if (updatedDayInteger == 3) {
+						updatedDay = "Wednesday";
+						complete1 = true;
+					} else if (updatedDayInteger == 4) {
+						updatedDay = "Thursday";
+						complete1 = true;
+					} else if (updatedDayInteger == 5) {
+						updatedDay = "Friday";
+						complete1 = true;
+					} else {
+						System.out.print("Please try again\n\n");
+					}
+
+				}
+				boolean complete2 = false;
+				while (complete2 == false) {
+					int updatedDayInteger = Helper
+							.readInt("\nEnter New Time ( 1 - Lunch Break , 2 - 3:00PM-4:00PM ): ");
+					if (updatedDayInteger == 1) {
+						updatedTime = "Lunch Break";
+						complete2 = true;
+					} else if (updatedDayInteger == 2) {
+						updatedTime = "3:00PM-4:00PM";
+						complete2 = true;
+					} else {
+						System.out.print("Please try again\n\n");
+					}
+
+				}
+				boolean available = true;
+				for (int i = 0; i < ccalist.size(); i++) {
+					if (ccalist.get(i).getCca_day_of_the_week().equals(updatedDay)) {
+						if (ccalist.get(i).getTime().equals(updatedTime)) {
+							available = false;
+						}
+					}
+				}
+				if (available == true) {
+					boolean loop1 = true;
+					while (loop1 == true) {
+						char confirm = Helper.readChar("\nConfirm (Y or N)? : ");
+						if (confirm == 'Y' || confirm == 'y') {
+							teacherlist.get(teacherPosition).setCca_day_of_the_week(updatedDay);
+							teacherlist.get(teacherPosition).setTime(updatedTime);
+							loop1 = false;
+						} else if (confirm == 'N' || confirm == 'n') {
+							loop1 = false;
+						} else {
+							System.out.print("Incorrect Input, Please Try again\n\n");
+						}
+					}
+				} else {
+					System.out.print("Date / Time clashes with other CCA, Please try again\n\n");
+				}
+
+			} else if (updateChoice == 4) {
+				System.out.print(
+						String.format("\nCCA VENUE: %s\n", teacherlist.get(teacherPosition).getCca_venue()));
+				String updatedVenue = Helper.readString("Enter New Venue: ");
+				boolean loop1 = true;
+				while (loop1 == true) {
+					char confirm = Helper.readChar("\nConfirm (Y or N)? : ");
+					if (confirm == 'Y' || confirm == 'y') {
+						teacherlist.get(teacherPosition).setCca_venue(updatedVenue);
+						;
+						loop1 = false;
+					} else if (confirm == 'N' || confirm == 'n') {
+						loop1 = false;
+					} else {
+						System.out.print("Incorrect Input, Please Try again\n\n");
+					}
+				}
+			} else if (updateChoice == 5) {
+				loop = false;
+			} else {
+				System.out.print("Incorrect Option, Please Try Again\n\n");
+			}
+		}
 	}
 
 	// ================================= Option 2 Add an user (CRUD - Create)
