@@ -747,6 +747,24 @@ public class C206_CaseStudy {
 		parentList.add(p);
 
 	}
+	
+	 public static student inputStudent() {
+	      int StudentID = Helper.readInt("Enter Student ID:");
+	      String studentName = Helper.readString("Enter Student's Name:");
+	      char StudentGrade = Helper.readChar("Enter Student's Grade:");
+	      String classroom = Helper.readString("Enter Student's Classroom:");
+	      String teacher = Helper.readString("Enter Student's teacher: ");
+	      
+	      student s = new student(teacher, teacher, StudentID,StudentID, studentName,teacher, StudentGrade,classroom,teacher, teacher, teacher, teacher, teacher);
+	      return s;
+	      
+	    }
+	    public static void addStudent(ArrayList<student>studentList,student s) {
+	      studentList.add(s);
+	    }
+	    public static void deleteStudent(ArrayList<student>studentList,student s) {
+	      studentList.remove(s);
+	    }
 
 	// ================================= Option 3 Delete an user (CRUD - Delete)
 	// =================================
@@ -768,9 +786,49 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return output;
 	}
+	
+	 public static String retrieveAllStudent(ArrayList<student> studentList) {
+	      String output = "";
+	
+	      for (int i = 0; i < studentList.size(); i++) {
+	        
+	        output += String.format("%-84s\n", studentList.get(i).toString());
+	
+	      }
+	      return output;
+	    }
+	    public static String viewAllStudent(ArrayList<student> studentList) {
+	      C206_CaseStudy.setHeader("STUDENT LIST");
+	      String output = String.format("%-10d %-10s %-10s %-10s %-10s\n", "Student ID", "Student Name",
+	          "GRADE", "CLASSROOM","TEACHER");
+	       output += retrieveAllStudent(studentList);  
+	      System.out.println(output);
+	      return output;
+	    }
+		if (userType == 1) {
+	        // Add a student
+	        //student student = inputStudent();
+	        student student = inputStudent();
+	        //C206_CaseStudy.addStudent(studentList, student);
+	        C206_CaseStudy.addStudent(studentList, student);
+	        //System.out.println("Student added");
+	        System.out.println("Student added");
+		if (OPTION_LOGIN == 1) {
+	        // Delete a student      
+	        //System.out.println("Student deleted");
+	        student student1 = inputStudent();
+	        C206_CaseStudy.deleteStudent(studentList, student1);
+	        System.out.println("Student deleted");}
+		}}
+		
 	// does this work?
 //test2
 	// good job
 	// why is this not working
+
+	public static void deleteCCA(ArrayList<CCA> cCAList, CCA cca2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

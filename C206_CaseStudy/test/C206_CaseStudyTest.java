@@ -206,10 +206,17 @@ public class C206_CaseStudyTest {
 	//Delete CCA
 	@Test
 	public void testDeleteCCA() {
-
-
-	}
-
+	             assertNotNull("Test if there is valid CCA arraylist to add to", CCAList);
+			
+			String CCA= C206_CaseStudy.viewAllCCA(CCAList);
+			String testOutput = "";
+			assertEquals("Check that ViewAllCAAList", testOutput,CCA );
+			
+			C206_CaseStudy.deleteCCA(CCAList, cca2);
+			assertEquals("Test if that student arraylist size is 1?", 1,CCAList.size());
+	
+	
+		}
 	@After
 	public void tearDown() throws Exception {
 		p1 = null;
