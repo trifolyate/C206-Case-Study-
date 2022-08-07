@@ -11,46 +11,31 @@ public class C206_CaseStudyTest {
 	private parent p2;
 	private student s1;
 	private student s2;
-<<<<<<< HEAD
 	private student s3;
 
-	
-<<<<<<< HEAD
 	private CCA cca1;
 	private CCA cca2;
-	
-	private ArrayList<CCA> CCAList;
-	private ArrayList<parent>parentList;
 	
 	//ArrayList<student> studentList = new ArrayList<student>();
 	//ArrayList<parent> parentList = new ArrayList<parent>();
 	//ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 	//ArrayList<CCA> CCAList = new ArrayList<CCA>();
-	
-   
-	
-=======
-=======
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	ArrayList<student> studentList = new ArrayList<student>();
 	ArrayList<parent> parentList = new ArrayList<parent>();
 	ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 	ArrayList<CCA> CCAList = new ArrayList<CCA>();
 	ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	public C206_CaseStudyTest() {
 		super();
-		//test fddgfgfdgdgfdgfdgfd
+	
 		
 	}
 
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
-//		p1 = new parent("CC0011", "Nikon HDSLR", 40);
-//		p2 = new parent("CC0012", "Sony DSC-RX100M7", 20);
+
 		s1 = new student(1,"John",'A',"banana","ash");
 		s2 = new student(2,"bob",'B',"minions","gru");
 		s3 = new student(3,"snoopy",'C',"oo","gru");
@@ -59,7 +44,7 @@ public class C206_CaseStudyTest {
 		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
      	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
 		
-<<<<<<< HEAD
+
 		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
 		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
 		
@@ -70,21 +55,19 @@ public class C206_CaseStudyTest {
 		//ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		CCAList = new ArrayList<CCA>();
 		parentList=new ArrayList<parent>();
-=======
-=======
+
 		s1 = new student("1001", "John", 'B', "B101", "Mr Tan");
 		s2 = new student("1002", "Max", 'C', "B102", "Mr Lim");
 		p1 = new parent("1001", "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
 		p2 = new parent("1002", "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
+
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	}
 
 	@Test
@@ -103,7 +86,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addParent(parentList, p2);
 		assertEquals("Test that parent arraylist size is 2?", 2, parentList.size());
 	}
-<<<<<<< HEAD
+
 	// ADD CCA details
 	@Test
 	public void testAddCCA() {
@@ -122,14 +105,7 @@ public class C206_CaseStudyTest {
 				assertEquals("Test that CCA arraylist size is 2?", 2, CCAList.size());
 		
 	}
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
-	
-	//test 
-=======
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	@Test
 	public void testViewAllParent() {
 		assertNotNull("Test if there is valid parent arraylist to view from", parentList);
@@ -141,7 +117,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that parent arraylist size is 2?", 2, parentList.size());
 
 	}
-<<<<<<< HEAD
+
 	//VIEWCCA
 	@Test
 	public void testRetrieveAllCCA() {
@@ -169,9 +145,7 @@ public class C206_CaseStudyTest {
 					
 			
 		}
-=======
 
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 	@Test
 	public void testDeleteParent() {
 		// Item list is not null, so that can delete a parent
@@ -184,7 +158,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteParent(parentList, p2);
 		assertEquals("Test if that parent arraylist size is 1?", 1, parentList.size());
 	}
-<<<<<<< HEAD
+
 	@Test
 	public void testAddStudent() {
 		// Item list is not null, so that can add a new item
@@ -228,20 +202,13 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that student arraylist size is 1?", 1, studentList.size());
 	}
 	
-<<<<<<< HEAD
+
 	//Delete CCA
 	@Test
 	public void testDeleteCCA() {
 
 
 	}
-	
-=======
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
 
 	@After
 	public void tearDown() throws Exception {
@@ -250,17 +217,16 @@ public class C206_CaseStudyTest {
 		s1 = null;
 		s2 = null;
 		parentList = null;
-<<<<<<< HEAD
 		
 		cca1= null;
 		cca2=null;
 		CCAList = null;
-=======
+
 		studentList = null;
 		teacherList = null;
 		CCAList = null;
 		categoryList = null;
->>>>>>> branch 'master' of https://github.com/trifolyate/C206-Case-Study-.git
+
 	}
 
 }
