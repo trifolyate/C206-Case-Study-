@@ -88,8 +88,7 @@ public class CCA extends CCACategory {
 	}
 	
 	public String toString() {
-		String result = String.format("%-15d %-15s %-15s %-15s %-19s %-13s\n", this.cca_id, this.cca_title,
-				this.cca_class_size, this.cca_day_of_the_week, this.time, this.cca_venue);
+		String result = String.format("%-15d %-15s %-15s %-15s %-19s %-13s\n", this.cca_id, this.cca_title,this.cca_class_size, this.cca_day_of_the_week, this.time, this.cca_venue);
 		return result;
 	}
 

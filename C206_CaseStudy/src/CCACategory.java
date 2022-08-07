@@ -26,8 +26,7 @@ public class CCACategory {
 		this.category_id = category_id;
 	}
 
-	@Override
-	public String toString() {
+	public String toStringMain() {
 		String output = String.format("%-10s %-10s\n", this.category_id,this.category_title);
 		return output;
 	}

@@ -183,8 +183,7 @@ public class student extends parent { // for P3 and below
 
 	@Override
 	public String toString() {
-		String output = String.format("%-10s %-14s %-10d %-10s %-10s %-10s\n", this.studentID, this.name, this.grade,
-				this.classroom, this.teacher,this.getStringRegistered());
+		String output = String.format("%-10s %-14s %-10d %-10s %-10s %-10s\n", this.studentID, this.name, this.grade,this.classroom, this.teacher,this.getStringRegistered());
 		return output;
 	}
 	

@@ -100,7 +100,7 @@ public class C206_CaseStudy {
 							}
 						}
 					}
-				} else if (userOption == 2) { // teachers
+				} else if (userOption == 2) {
 					System.out.print("\n");
 					C206_CaseStudy.LoginMenu();
 					int teacherPositionInList = 0;
@@ -878,18 +878,16 @@ public class C206_CaseStudy {
 					break;
 				} else {
 					studentlist.get(studentRegisteredPosition).setRegistered(true);
-					boolean loopCCAID = true;
-					while (loopCCAID == true) {
+					boolean loopCCAREGISTERID = true;
+					while (loopCCAREGISTERID == true) {
 						int min = 100;
 						int max = 999;
 						int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
 						String CCAID = "C123";
-						boolean uniqueCCAID = false;
+						boolean uniqueCCAID = true;
 						for (int i = 0; i < studentlist.size(); i++) {
 							if (studentlist.get(i).getCCAID().equals(CCAID)) {
-								random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
-								CCAID = String.format("C%d", random_int);
-								uniqueCCAID = true;
+								uniqueCCAID = false;
 								continue;
 							} else {
 								uniqueCCAID = false;
@@ -897,9 +895,12 @@ public class C206_CaseStudy {
 						}
 						if (uniqueCCAID == true) {
 							studentlist.get(studentRegisteredPosition).setCCAID(CCAID);
-							loopCCAID = false;
+							loopCCAREGISTERID = false;
+						} else if (uniqueCCAID == false)
+						{
+							random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+							CCAID = String.format("C%d", random_int);
 						}
-
 					}
 					System.out.print("\n");
 					C206_CaseStudy.setHeader("EMAIL SENT!!");
@@ -973,8 +974,8 @@ public class C206_CaseStudy {
 						"It seems like the student has already registered\n(one student, one account)\nPlease log in using this student's ID and the CCA Registration ID that \nwe have send you to your email\n\n");
 			} else {
 				studentlist.get(studentRegisteredPosition).setRegistered(true);
-				boolean loopCCAID = true;
-				while (loopCCAID == true) {
+				boolean loopCCASUID = true;
+				while (loopCCASUID == true) {
 					int min = 100;
 					int max = 999;
 					int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
@@ -992,7 +993,7 @@ public class C206_CaseStudy {
 					}
 					if (sameCCAID == false) {
 						studentlist.get(studentRegisteredPosition).setCCAID(CCAID);
-						loopCCAID = false;
+						loopCCASUID = false;
 					}
 
 				}
@@ -1086,7 +1087,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < studentList.size(); i++) {
 
-			output += String.format("%-84s\n", studentList.get(i).toString());
+			output += String.format("%s\n", studentList.get(i).toString());
 
 		}
 		return output;
@@ -1172,7 +1173,7 @@ public class C206_CaseStudy {
 		studentList.remove(position);
 	}
 	
-	public static void deleteStudent(ArrayList<student> parentlist, student s) { // katie
+	public static void deleteStudent(ArrayList<student> parentlist, student s) { // matthew codes
 		parentlist.remove(s);
 	}
 
@@ -1187,8 +1188,7 @@ public class C206_CaseStudy {
 	public static String viewAllCCA(ArrayList<CCA> CCAList) { // sruthi codes ash enhancements
 		C206_CaseStudy.setHeader("CCA LIST");
 		System.out.print("\n");
-		String output = String.format("%-15s %-15s %-15s %-15s %-19s %-15s\n", "CCA ID", "CCA TITLE", "CLASS SIZE",
-				"DAY OF WEEK", "TIME", "VENUE");
+		String output = String.format("%-15s %-15s %-15s %-15s %-19s %-15s\n", "CCA ID", "CCA TITLE", "CLASS SIZE","DAY OF WEEK", "TIME", "VENUE");
 		output += retrieveAllCCA(CCAList);
 		System.out.println(output);
 		System.out.print("\n");
@@ -1233,10 +1233,32 @@ public class C206_CaseStudy {
 				System.out.print("Incorrect ID, Please try again\n\n");
 			}
 		}
-		int cca_id = ccalist.size() + 1;
+		int cca_id = 0;
+		
 		String ccaTitle = Helper.readString("Enter CCA title > ");
 		String ccaDescription = Helper.readString("Enter CCA description > ");
-		int ccaClassSize = 0;
+		boolean loopCCAID = true;
+		while (loopCCAID == true) {
+			int min = 1;
+			int max = ccalist.size()+1;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+			int CCAID = random_int;
+			boolean uniqueCCACATID = true;
+			for (int i = 0; i < ccalist.size(); i++) {
+				if (ccalist.get(i).getCca_id() == CCAID) {
+					uniqueCCACATID = false;
+				}
+			}
+			if (uniqueCCACATID == true) {
+				cca_id = CCAID;
+				loopCCAID = false;
+			} else if (uniqueCCACATID == false)
+			{
+				random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+				CCAID = random_int;
+			}
+
+		}
 		String cca_day_of_the_week = "";
 		String time = "";
 		boolean complete1 = false;
@@ -1308,11 +1330,15 @@ public class C206_CaseStudy {
 	public static void deleteCCA(ArrayList<CCA> CCAList, int position) { // sruthi codes ash enhancements
 		CCAList.remove(position);
 	}
+	
+	public static void deleteCCA(ArrayList<CCA> CCAList,CCA c) { // sruthi codes ash enhancements
+		CCAList.remove(c);
+	}
 
 	public static String retrieveAllCCACategory(ArrayList<CCACategory> categorylist) { // matthew Codes
 		String output = "";
 		for (int i = 0; i < categorylist.size(); i++) {
-			output += String.format("%s\n", categorylist.get(i).toString());
+			output += String.format("%s\n", categorylist.get(i).toStringMain());
 		}
 		return output;
 	}
@@ -1346,13 +1372,35 @@ public class C206_CaseStudy {
 
 	public static CCACategory inputCCACategory(ArrayList<CCACategory> ccacatlist) { // matthew codes ash enhancements
 		String category_title = Helper.readString("Enter CCA Category Title: \n");
-		int category_id = ccacatlist.size() + 1;
+		int category_id = 0;
+		boolean loopCCACATID = true;
+		while (loopCCACATID == true) {
+			int min = 1;
+			int max = ccacatlist.size()+1;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+			int CCACATID = random_int;
+			boolean uniqueCCACATID = true;
+			for (int i = 0; i < ccacatlist.size(); i++) {
+				if (ccacatlist.get(i).getcat_ID() == CCACATID) {
+					uniqueCCACATID = false;
+				}
+			}
+			if (uniqueCCACATID == true) {
+				category_id = CCACATID;
+				loopCCACATID = false;
+			} else if (uniqueCCACATID == false)
+			{
+				random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+				CCACATID = random_int;
+			}
+
+		}
 		CCACategory ct = new CCACategory(category_title, category_id);
 		return ct;
 	}
 
-	public static void addCCACategory(ArrayList<CCACategory> categorylist, CCACategory ccaCat) { // matthew codes
-		categorylist.add(ccaCat);
+	public static void addCCACategory(ArrayList<CCACategory> categorylist, CCACategory ct) { // matthew codes
+		categorylist.add(ct);
 	}
 
 	public static int SUchoosecorrectCCACATDELETE(ArrayList<CCACategory> ccacatlist) { // matthew codes ash enhancement
@@ -1376,11 +1424,15 @@ public class C206_CaseStudy {
 	public static void deleteCCACategory(ArrayList<CCACategory> categorylist, int position) { // matthew codes
 		categorylist.remove(position);
 	}
+	
+	public static void deleteCCACategory(ArrayList<CCACategory> categorylist, CCACategory ct) { // matthew codes
+		categorylist.remove(ct);
+	}
 
 	public static String retrieveAllParent(ArrayList<parent> parentList) {
 		String output = "";
 		for (int i = 0; i < parentList.size(); i++) {
-			output += String.format("%-84s\n", parentList.get(i).toString());
+			output += String.format("%s\n", parentList.get(i).toString());
 		}
 		return output;
 	}
@@ -1417,8 +1469,29 @@ public class C206_CaseStudy {
 		String parentName = Helper.readString("Enter Parent Name: ");
 		String email = Helper.readString("Enter Parent Email: ");
 		int contactNo = Helper.readInt("Enter Contact No: ");
-		int familyID = parentlist.size();
-		
+		int familyID = 0;
+		boolean loopFAMILYID = true;
+		while (loopFAMILYID == true) {
+			int min = 1;
+			int max = parentlist.size()+1;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+			int FamilyID = random_int;
+			boolean uniqueCCAID = true;
+			for (int i = 0; i < parentlist.size(); i++) {
+				if (parentlist.get(i).getFamilyId() == FamilyID) {
+					uniqueCCAID = false;
+				}
+			}
+			if (uniqueCCAID == true) {
+				familyID = FamilyID;
+				loopFAMILYID = false;
+			} else if (uniqueCCAID == false)
+			{
+				random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+				FamilyID = random_int;
+			}
+
+		}
 		parent p = new parent(parentName, email, contactNo, familyID);
 		return p;
 	}
