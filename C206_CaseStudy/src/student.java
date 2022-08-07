@@ -106,7 +106,18 @@ public class student extends parent { // for P3 and below
 	public boolean isRegistered() {
 		return registered;
 	}
-
+	
+	public String getStringRegistered() {
+		String output = "";
+		if(this.registered == true)
+		{
+			output = "true";
+		} else
+		{
+			output = "false";
+		}
+		return output;
+	}
 	public void setRegistered(boolean registered) {
 		this.registered = registered;
 	}
@@ -114,7 +125,19 @@ public class student extends parent { // for P3 and below
 	public boolean isLowerPrimary() {
 		return lowerPrimary;
 	}
-
+	
+	public String getStringLowerPrimary() {
+		String output = "";
+		if(this.lowerPrimary == true)
+		{
+			output = "true";
+		} else
+		{
+			output = "false";
+		}
+		return output;
+	}
+	
 	public void setLowerPrimary(boolean lowerPrimary) {
 		this.lowerPrimary = lowerPrimary;
 	}
@@ -157,4 +180,13 @@ public class student extends parent { // for P3 and below
 		}
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		String output = String.format("%-10s %-14s %-10d %-10s %-10s %-10s\n", this.studentID, this.name, this.grade,
+				this.classroom, this.teacher,this.getStringRegistered());
+		return output;
+	}
+	
+	
 }

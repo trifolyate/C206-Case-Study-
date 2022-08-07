@@ -49,4 +49,12 @@ public class parent {
 		this.contactNo = contactNo;
 	}
 
+
+	@Override
+	public String toString() {
+		String output = String.format("%-10s %-10s %-10d %-10d\n",this.parentName,this.email,this.contactNo,this.familyId);
+		return output;
+	}
+	
+	
 }

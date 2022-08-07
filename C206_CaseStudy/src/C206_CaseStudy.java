@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +24,6 @@ public class C206_CaseStudy {
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 		ArrayList<superUser> superUserList = new ArrayList<superUser>();
-		
 
 		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S123", "Ash Kid 1", 3, "3A",
 				"MS THAMMY", "C123", "", "", "", true, true));
@@ -35,14 +35,12 @@ public class C206_CaseStudy {
 				false, false));
 		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S654", "Ash Kid 5", 2, "2B",
 				"Mr Tan", "C123", "Soccer", "", "", true, true));
-		
-		
+
 		parentList.add(new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1));
-		parentList.add(new parent("Ash Parent 2", "ash@gmail.com", 1234, 2));
-		parentList.add(new parent("Ash 3", "ash@gmail.com", 1234, 2));
-		parentList.add(new parent("Ash 4", "ash@gmail.com", 1234, 3));
-		
-		
+		parentList.add(new parent("Ash Parent 2", "ash@gmail.com", 81023823, 2));
+		parentList.add(new parent("Ash Parent 3", "ash@gmail.com", 91203981, 3));
+		parentList.add(new parent("Ash Parent 4", "ash@gmail.com", 81237290, 4));
+
 		CCAList.add(new CCA("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Monday", "3:00PM-4:00PM", "Field"));
@@ -52,21 +50,18 @@ public class C206_CaseStudy {
 		CCAList.add(new CCA("Sports", 1, 3, "Soccer2",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Monday", "Lunch Break", "Field"));
-		
-		
+
 		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Wednesday", "Lunch Break", "Field", "T123", "Mr. Ash", "apple"));
 		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Wedesday", "3:00PM- 4:00PM", "Field", "T321", "Mr. Ash1", "apple1"));
-		
-		
+
 		categoryList.add(new CCACategory("Sports", 1));
 		categoryList.add(new CCACategory("Clubs & Societies", 2));
-		
-		
-		superUserList.add(new superUser("U1","password","Ash Principal", "Principal"));
+
+		superUserList.add(new superUser("U1", "password", "Ash Principal", "Principal"));
 		int option = 0;
 		while (option != OPTION_QUIT) {
 			C206_CaseStudy.mainMenu();
@@ -149,23 +144,96 @@ public class C206_CaseStudy {
 					superUserInList = findSuperUserPositionInList(superUserList);
 					if (superUserInList != -1) {
 						System.out.print("\n");
-						C206_CaseStudy.setHeader("Teacher CCA Page");
+						C206_CaseStudy.setHeader("Super User Page");
 						boolean loop = true;
 						while (loop == true) {
-							int teacherOption = superUserChoices(superUserList, superUserInList);
-							if (teacherOption == 1) // view students inside CCA
+//							System.out.print("\n (1) Add/View/Delete Student \n");
+//							System.out.print(" (2) Add/View/Delete CCA \n");
+//							System.out.print(" (3) Add/View/Delete CCA Category \n");
+//							System.out.print(" (4) Add/View/Delete Parent \n");
+//							System.out.print(" (5) Exit\n\n");
+							int superUserOption = superUserChoices(superUserList, superUserInList);
+							if (superUserOption == 1) // (1) Add/View/Delete Student
 							{
-							} else if (teacherOption == 2) // View CCA Details
+								boolean loop2 = true;
+								while (loop2 == true) {
+									viewAllStudent(studentList);
+
+									int su_ccaoption = SUCCAOptions();
+									if (su_ccaoption == 1) // add
+									{
+										student addedStudent = inputStudent();
+										addStudent(studentList, addedStudent);
+									} else if (su_ccaoption == 2) // delete
+									{
+										int focusstudent = SUchoosecorrectStudentDELETE(studentList);
+										deleteStudent(studentList, focusstudent);
+									} else {
+										loop2 = false;
+									}
+								}
+
+							} else if (superUserOption == 2) // (2) Add/View/Delete CCA
 							{
-							} else if (teacherOption == 3) // Edit CCA Details
+								boolean loop3 = true;
+								while (loop3 == true) {
+									viewAllCCA(CCAList);
+
+									int su_studentoption = SUstudentOptions(studentList);
+									if (su_studentoption == 1) // add
+									{
+										CCA addedCCA = inputCCA(CCAList, categoryList);
+										addCCA(CCAList, addedCCA);
+									} else if (su_studentoption == 2) // delete
+									{
+										int focusCCA = SUchoosecorrectCCADELETE(CCAList);
+										deleteCCA(CCAList, focusCCA);
+									} else {
+										loop3 = false;
+									}
+								}
+							} else if (superUserOption == 3) // (3) Add/View/Delete CCA Category
 							{
+								boolean loop4 = true;
+								while (loop4 == true) {
+									viewAllCCACategory(categoryList);
+									int su_ccacatoption = SUCCACATOptions();
+									if (su_ccacatoption == 1) // add
+									{
+										CCACategory addedCCACategory = inputCCACategory(categoryList);
+										addCCACategory(categoryList, addedCCACategory);
+									} else if (su_ccacatoption == 2) // delete
+									{
+										int focusCCACAt = SUchoosecorrectCCACATDELETE(categoryList);
+										deleteCCACategory(categoryList, focusCCACAt);
+									} else {
+										loop4 = false;
+									}
+								}
+							} else if (superUserOption == 4) // (4) Add/View/Delete Parent
+							{
+								boolean loop5 = true;
+								while (loop5 == true) {
+									viewAllParent(parentList);
+									int su_parentoption = SUPARENTOptions();
+									if (su_parentoption == 1) // add
+									{
+										parent addedParent = inputParent(parentList);
+										addParent(parentList, addedParent);
+									} else if (su_parentoption == 2) // delete
+									{
+										int focusParent = SUchoosecorrectPARENTDELETE(parentList);
+										deleteParent(parentList, focusParent);
+									} else {
+										loop5 = false;
+									}
+								}
 							} else {
 								loop = false;
 							}
 						}
 					}
-					
-					
+
 				} else if (userOption == 4) { // empty means it will go back to Main Page
 				}
 			}
@@ -250,11 +318,6 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
-	}
-
-	public static String retrieveAllParent(ArrayList<parent> parentList) {
-		String output = "";
-		return output;
 	}
 
 	public static void addCCALoginStudent(ArrayList<CCA> list, int StudentListPosition, ArrayList<student> studentlist,
@@ -512,35 +575,6 @@ public class C206_CaseStudy {
 		return position;
 	}
 
-	public static String retrieveCCADetails(ArrayList<CCA> CCAList, int ccaID) {
-		String output = "";
-		for (int i = 0; i < CCAList.size(); i++) {
-			if (CCAList.get(i).getCca_id() == ccaID)
-				output += String.format("Test");
-		}
-		return output;
-	}
-
-	public static String retrieveAllCCA(ArrayList<CCA> CCAList) {
-		String output = "";
-		for (int i = 0; i < CCAList.size(); i++) {
-			output += String.format("%-84s\n", CCAList.get(i).toString());
-		}
-		return output;
-	}
-
-	public static String viewAllCCA(ArrayList<CCA> CCAList) {
-		C206_CaseStudy.setHeader("CCA LIST");
-		System.out.print("\n");
-		String output = String.format("%-15s %-15s %-15s %-15s %-19s %-15s\n", "CCA ID", "CCA TITLE", "CLASS SIZE",
-				"DAY OF WEEK", "TIME", "VENUE");
-		output += retrieveAllCCA(CCAList);
-		System.out.println(output);
-		System.out.print("\n");
-		return output;
-
-	}
-
 	public static int findTeacherPositionInList(ArrayList<Teacher> teacherList) {
 		int teacherPosition = -1;
 		boolean loop = true;
@@ -774,9 +808,6 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option 2 Add an user (CRUD - Create)
-	// =================================
-
 	public static void RegisterStudentP3andBelow(ArrayList<student> studentlist, ArrayList<parent> parentlist) { // Using
 
 		String parentName = "";// Katie
@@ -820,7 +851,6 @@ public class C206_CaseStudy {
 			}
 		}
 		int studentRegisteredPosition = -1;
-		boolean repeated = false;
 		boolean repeatAddingStudent = true;
 		while (repeatAddingStudent == true) {
 			boolean studentFound = false;
@@ -853,7 +883,6 @@ public class C206_CaseStudy {
 						int min = 100;
 						int max = 999;
 						int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
-//						String CCAID = String.format("C%d", random_int);
 						String CCAID = "C123";
 						boolean uniqueCCAID = false;
 						for (int i = 0; i < studentlist.size(); i++) {
@@ -862,7 +891,7 @@ public class C206_CaseStudy {
 								CCAID = String.format("C%d", random_int);
 								uniqueCCAID = true;
 								continue;
-							}else {
+							} else {
 								uniqueCCAID = false;
 							}
 						}
@@ -1018,8 +1047,7 @@ public class C206_CaseStudy {
 		return position;
 	}
 
-	public static int superUserChoices(ArrayList<superUser> superlist,int position)
-	{
+	public static int superUserChoices(ArrayList<superUser> superlist, int position) {
 		int option = -1;
 		boolean loop = true;
 		System.out.print("\n");
@@ -1046,71 +1074,14 @@ public class C206_CaseStudy {
 		return option;
 	}
 
-	public static void inputParentForSuperUser(ArrayList<parent> parentlist) {
-		String parentName = Helper.readString("Enter Parent Name: ");
-		String email = Helper.readString("Enter Parent Email: ");
-		int contactNo = Helper.readInt("Enter Contact No: ");
-		int familyid = parentlist.size() + 1;
-
-		parent p = new parent(parentName, email, contactNo, familyid);
-		addParent(parentlist, p);
-	}
-
-	public static void inputParentForRegistration(ArrayList<parent> parentlist, String parentName, String email,
+	public static void inputParentForRegistration(ArrayList<parent> parentlist, String parentName, String email, // ash
+																													// codes
 			int contactNo, int familyid) {
 		parent p = new parent(parentName, email, contactNo, familyid);
 		addParent(parentlist, p);
 	}
 
-	public static void addParent(ArrayList<parent> parentList, parent p) {
-
-		parentList.add(p);
-
-	}
-
-	public static student inputStudent() {
-		int StudentID = Helper.readInt("Enter Student ID:");
-		String studentName = Helper.readString("Enter Student's Name:");
-		char StudentGrade = Helper.readChar("Enter Student's Grade:");
-		String classroom = Helper.readString("Enter Student's Classroom:");
-		String teacher = Helper.readString("Enter Student's teacher: ");
-
-		student s = new student(teacher, teacher, StudentID, StudentID, studentName, teacher, StudentGrade, classroom,
-				teacher, teacher, teacher, teacher, teacher, false, false);
-		return s;
-
-	}
-
-	public static void addStudent(ArrayList<student> studentList, student s) {
-		studentList.add(s);
-	}
-
-	public static void deleteStudent(ArrayList<student> studentList, student s) {
-		studentList.remove(s);
-	}
-
-	// ================================= Option 3 Delete an user (CRUD - Delete)
-	// =================================
-
-	public static String deleteParent(ArrayList<parent> parentList, parent p) {
-		String output = "";
-		for (int i = 0; i < parentList.size(); i++) {
-
-			output += String.format("%-84s\n", parentList.get(i).toString());
-		}
-		return output;
-	}
-
-	public static String viewAllParent(ArrayList<parent> parentList) {
-		C206_CaseStudy.setHeader("PARENT LIST");
-		String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
-				"CHILD GRADE", "CHILD CLASS", "CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO");
-		output += retrieveAllParent(parentList);
-		System.out.println(output);
-		return output;
-	}
-
-	public static String retrieveAllStudent(ArrayList<student> studentList) {
+	public static String retrieveAllStudent(ArrayList<student> studentList) { // katie codes
 		String output = "";
 
 		for (int i = 0; i < studentList.size(); i++) {
@@ -1121,42 +1092,377 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static String viewAllStudent(ArrayList<student> studentList) {
+	public static String viewAllStudent(ArrayList<student> studentList) { // katie codes
+		System.out.print("\n");
 		C206_CaseStudy.setHeader("STUDENT LIST");
-		String output = String.format("%-10d %-10s %-10s %-10s %-10s\n", "Student ID", "Student Name", "GRADE",
-				"CLASSROOM", "TEACHER");
+		String output = String.format("%-10s %-14s %-10s %-10s %-10s %-10s\n", "Student ID", "Student Name", "GRADE",
+				"CLASSROOM", "TEACHER", "REGISTERED?");
 		output += retrieveAllStudent(studentList);
 		System.out.println(output);
 		return output;
 	}
 
-	private ArrayList<student> studentList;
-	{
-		if (OPTION_LOGIN == 1) {
-			// Add a student
-			// student student = inputStudent();
-			student student = inputStudent();
-			// C206_CaseStudy.addStudent(studentList, student);
-			C206_CaseStudy.addStudent(studentList, student);
-			// System.out.println("Student added");
-			System.out.println("Student added");
-			if (OPTION_LOGIN == 1) {
-				// Delete a student
-				// System.out.println("Student deleted");
-				student student1 = inputStudent();
-				C206_CaseStudy.deleteStudent(studentList, student1);
-				System.out.println("Student deleted");
+	public static int SUchoosecorrectStudentDELETE(ArrayList<student> studentlist) { // katie codes
+		int position = -1;
+		boolean loop = true;
+		while (loop == true) {
+			String focusStudent = Helper.readString("Enter the Student ID you wish to delete:");
+			for (int i = 0; i < studentlist.size(); i++) {
+				if (studentlist.get(i).getStudentID().equals(focusStudent)) {
+					position = i;
+					loop = false;
+				}
+			}
+			if (position == -1) {
+				System.out.print("Please try again\n\n");
 			}
 		}
+		return position;
 	}
 
-	// does this work?
-//test2
-	// good job
-	// why is this not working
+	public static int SUstudentOptions(ArrayList<student> studentlist) { // ash codes
+		int result = -1;
+		System.out.print("\n");
+		boolean loop = true;
+		while (loop == true) {
+			System.out.print("(1) Add Student\n");
+			System.out.print("(2) Remove Student\n");
+			System.out.print("(3) EXIT\n");
+			result = Helper.readInt("Please select your option (1,2 or 3): ");
+			if (result >= 1 && result <= 3) {
+				loop = false;
+				return result;
+			} else {
+				System.out.print("Incorrect option, please try again\n\n");
+			}
+		}
+		return result;
+	}
 
-	public static void deleteCCA(ArrayList<CCA> cCAList, CCA cca2) {
+	public static student inputStudent() { // katie codes ash enhancements
+		String StudentID = Helper.readString("Enter Student ID: \n");
+		String studentName = Helper.readString("Enter Student's Name: \n");
+		int StudentGrade = Helper.readInt("Enter Student's Grade: \n");
+		String classroom = Helper.readString("Enter Student's Classroom: \n");
+		String teacher = Helper.readString("Enter Student's teacher: \n");
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		int length = 10;
+		for (int i = 0; i < length; i++) {
+			int index = random.nextInt(alphabet.length());
+			char randomChar = alphabet.charAt(index);
+			sb.append(randomChar);
+		}
+		String fakeCCAID = sb.toString();
+		boolean lowerPrimary = true;
+		if (StudentGrade > 3) {
+			lowerPrimary = false;
+		}
+		student s = new student("", "", 0, 0, StudentID, studentName, StudentGrade, classroom, teacher, fakeCCAID, "",
+				"", "", false, lowerPrimary);
+		return s;
+	}
 
+	public static void addStudent(ArrayList<student> studentList, student s) { // katie codes
+		studentList.add(s);
+	}
+
+	public static void deleteStudent(ArrayList<student> studentList, int position) { // katie codes ash enhancement
+		studentList.remove(position);
+	}
+
+	public static String retrieveAllCCA(ArrayList<CCA> CCAList) { // sruthi codes ash enhancements
+		String output = "";
+		for (int i = 0; i < CCAList.size(); i++) {
+			output += String.format("%-84s\n", CCAList.get(i).toString());
+		}
+		return output;
+	}
+
+	public static String viewAllCCA(ArrayList<CCA> CCAList) { // sruthi codes ash enhancements
+		C206_CaseStudy.setHeader("CCA LIST");
+		System.out.print("\n");
+		String output = String.format("%-15s %-15s %-15s %-15s %-19s %-15s\n", "CCA ID", "CCA TITLE", "CLASS SIZE",
+				"DAY OF WEEK", "TIME", "VENUE");
+		output += retrieveAllCCA(CCAList);
+		System.out.println(output);
+		System.out.print("\n");
+		return output;
+
+	}
+
+	public static int SUCCAOptions() {
+		int result = -1;
+		System.out.print("\n");
+		boolean loop = true;
+		while (loop == true) {
+			System.out.print("(1) Add CCA\n");
+			System.out.print("(2) Remove CCA\n");
+			System.out.print("(3) EXIT\n");
+			result = Helper.readInt("Please select your option (1,2 or 3): ");
+			if (result >= 1 && result <= 3) {
+				loop = false;
+				return result;
+			} else {
+				System.out.print("Incorrect option, please try again\n\n");
+			}
+		}
+		return result;
+	}
+
+	public static CCA inputCCA(ArrayList<CCA> ccalist, ArrayList<CCACategory> ccacatlist) { // sruthi codes ash
+																							// enhancements
+		viewAllCCACategory(ccacatlist);
+		String category_title = "";
+		int category_id = 0;
+		boolean categoryCorrect = false;
+		while (categoryCorrect == false) {
+			category_id = Helper.readInt("Enter Category ID > ");
+			for (int i = 0; i < ccacatlist.size(); i++) {
+				if (ccacatlist.get(i).getcat_ID() == category_id) {
+					category_title = ccacatlist.get(i).getTitle();
+					categoryCorrect = true;
+				}
+			}
+			if (categoryCorrect == false) {
+				System.out.print("Incorrect ID, Please try again\n\n");
+			}
+		}
+		int cca_id = ccalist.size() + 1;
+		String ccaTitle = Helper.readString("Enter CCA title > ");
+		String ccaDescription = Helper.readString("Enter CCA description > ");
+		int ccaClassSize = 0;
+		String cca_day_of_the_week = "";
+		String time = "";
+		boolean complete1 = false;
+		while (complete1 == false) {
+			int updatedDayInteger = Helper.readInt(
+					"\nEnter New Day of the Week \n( 1 - Monday , 2 - Tuesday, 3 - Wednesday, 4 - Thursday, 5 - Friday ): ");
+			if (updatedDayInteger == 1) {
+				cca_day_of_the_week = "Monday";
+				complete1 = true;
+			} else if (updatedDayInteger == 2) {
+				cca_day_of_the_week = "Tuesday";
+				complete1 = true;
+			} else if (updatedDayInteger == 3) {
+				cca_day_of_the_week = "Wednesday";
+				complete1 = true;
+			} else if (updatedDayInteger == 4) {
+				cca_day_of_the_week = "Thursday";
+				complete1 = true;
+			} else if (updatedDayInteger == 5) {
+				cca_day_of_the_week = "Friday";
+				complete1 = true;
+			} else {
+				System.out.print("Please try again\n\n");
+			}
+
+		}
+		boolean complete2 = false;
+		while (complete2 == false) {
+			int updatedDayInteger = Helper.readInt("\nEnter New Time ( 1 - Lunch Break , 2 - 3:00PM-4:00PM ): ");
+			if (updatedDayInteger == 1) {
+				time = "Lunch Break";
+				complete2 = true;
+			} else if (updatedDayInteger == 2) {
+				time = "3:00PM-4:00PM";
+				complete2 = true;
+			} else {
+				System.out.print("Please try again\n\n");
+			}
+
+		}
+		String ccaVenue = Helper.readString("Enter CCA venue > ");
+		CCA cca = new CCA(category_title, category_id, cca_id, ccaTitle, ccaDescription, 0, cca_day_of_the_week, time,
+				ccaVenue);
+		return cca;
+	}
+
+	public static void addCCA(ArrayList<CCA> CCAList, CCA cca) {
+		CCAList.add(cca);
+	}
+
+	public static int SUchoosecorrectCCADELETE(ArrayList<CCA> ccalist) { // sruthi codes ash enhancement
+		int position = -1;
+		boolean loop = true;
+		while (loop == true) {
+			int focusCCA = Helper.readInt("Enter the CCA ID you wish to delete:");
+			for (int i = 0; i < ccalist.size(); i++) {
+				if (ccalist.get(i).getCca_id() == focusCCA) {
+					position = i;
+					loop = false;
+				}
+			}
+			if (position == -1) {
+				System.out.print("Please try again\n\n");
+			}
+		}
+		return position;
+	}
+
+	public static void deleteCCA(ArrayList<CCA> CCAList, int position) { // sruthi codes ash enhancements
+		CCAList.remove(position);
+	}
+
+	public static String retrieveAllCCACategory(ArrayList<CCACategory> categorylist) { // matthew Codes
+		String output = "";
+		for (int i = 0; i < categorylist.size(); i++) {
+			output += String.format("%s\n", categorylist.get(i).toString());
+		}
+		return output;
+	}
+
+	public static String viewAllCCACategory(ArrayList<CCACategory> categorylist) { // matthew Codes
+		C206_CaseStudy.setHeader("CCA Categories");
+		String output = String.format("%-10s %-10s\n", "CCA ID", "CCA CATEGORY");
+		output += retrieveAllCCACategory(categorylist);
+		System.out.println(output);
+		return output;
+	}
+
+	public static int SUCCACATOptions() { // ash codes
+		int result = -1;
+		System.out.print("\n");
+		boolean loop = true;
+		while (loop == true) {
+			System.out.print("(1) Add CCA Category\n");
+			System.out.print("(2) Remove CCA Category\n");
+			System.out.print("(3) EXIT\n");
+			result = Helper.readInt("Please select your option (1,2 or 3): ");
+			if (result >= 1 && result <= 3) {
+				loop = false;
+				return result;
+			} else {
+				System.out.print("Incorrect option, please try again\n\n");
+			}
+		}
+		return result;
+	}
+
+	public static CCACategory inputCCACategory(ArrayList<CCACategory> ccacatlist) { // matthew codes ash enhancements
+		String category_title = Helper.readString("Enter CCA Category Title: \n");
+		int category_id = ccacatlist.size() + 1;
+		CCACategory ct = new CCACategory(category_title, category_id);
+		return ct;
+	}
+
+	public static void addCCACategory(ArrayList<CCACategory> categorylist, CCACategory ccaCat) { // matthew codes
+		categorylist.add(ccaCat);
+	}
+
+	public static int SUchoosecorrectCCACATDELETE(ArrayList<CCACategory> ccacatlist) { // matthew codes ash enhancement
+		int position = -1;
+		boolean loop = true;
+		while (loop == true) {
+			int focusCATEGORY = Helper.readInt("Enter the CATEGORY ID you wish to delete:");
+			for (int i = 0; i < ccacatlist.size(); i++) {
+				if (ccacatlist.get(i).getcat_ID() == focusCATEGORY) {
+					position = i;
+					loop = false;
+				}
+			}
+			if (position == -1) {
+				System.out.print("Please try again\n\n");
+			}
+		}
+		return position;
+	}
+
+	public static void deleteCCACategory(ArrayList<CCACategory> categorylist, int position) { // matthew codes
+		categorylist.remove(position);
+	}
+
+	public static String retrieveAllParent(ArrayList<parent> parentList) {
+		String output = "";
+		for (int i = 0; i < parentList.size(); i++) {
+			output += String.format("%-84s\n", parentList.get(i).toString());
+		}
+		return output;
+	}
+
+	public static String viewAllParent(ArrayList<parent> parentList) {
+		C206_CaseStudy.setHeader("PARENT LIST");
+		String output = String.format("%-12s %-11s %-11s %-10s\n", "PARENT NAME", "PARENT EMAIL", "CONTACT NO",
+				"FAMILY ID");
+		output += retrieveAllParent(parentList);
+		System.out.println(output);
+		return output;
+	}
+
+	public static int SUPARENTOptions() { // ash codes
+		int result = -1;
+		System.out.print("\n");
+		boolean loop = true;
+		while (loop == true) {
+			System.out.print("(1) Add Parent\n");
+			System.out.print("(2) Remove Parent\n");
+			System.out.print("(3) EXIT\n");
+			result = Helper.readInt("Please select your option (1,2 or 3): ");
+			if (result >= 1 && result <= 3) {
+				loop = false;
+				return result;
+			} else {
+				System.out.print("Incorrect option, please try again\n\n");
+			}
+		}
+		return result;
+	}
+
+	public static parent inputParent(ArrayList<parent> parentlist) { // zhuo hong codes
+		String parentName = Helper.readString("Enter Parent Name: ");
+		String email = Helper.readString("Enter Parent Email: ");
+		int contactNo = Helper.readInt("Enter Contact No: ");
+		int familyID = 0;
+		boolean loopFamilyID = true;
+		while (loopFamilyID == true) {
+			int min = 1;
+			int max = 99;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+			int FAMILYID = 99;
+			boolean uniqueCCAID = false;
+			for (int i = 0; i < parentlist.size(); i++) {
+				if (parentlist.get(i).getFamilyId() == FAMILYID) {
+					random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+					FAMILYID = random_int;
+					uniqueCCAID = true;
+					continue;
+				} else {
+				}
+			}
+			if (uniqueCCAID == true) {
+				familyID = FAMILYID;
+				loopFamilyID = false;
+			}
+		}
+		parent p = new parent(parentName, email, contactNo, familyID);
+		return p;
+	}
+
+	public static void addParent(ArrayList<parent> parentList, parent p) {
+		parentList.add(p);
+	}
+
+	public static int SUchoosecorrectPARENTDELETE(ArrayList<parent> parentlist) { // matthew codes ash enhancement
+		int position = -1;
+		boolean loop = true;
+		while (loop == true) {
+			int focusFAMILYID = Helper.readInt("Enter the PARENT FAMILY ID you wish to delete:");
+			for (int i = 0; i < parentlist.size(); i++) {
+				if (parentlist.get(i).getFamilyId() == focusFAMILYID) {
+					position = i;
+					loop = false;
+				}
+			}
+			if (position == -1) {
+				System.out.print("Please try again\n\n");
+			}
+		}
+		return position;
+	}
+
+	public static void deleteParent(ArrayList<parent> parentlist, int position) { // matthew codes
+		parentlist.remove(position);
 	}
 
 }
