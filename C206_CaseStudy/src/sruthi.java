@@ -1,51 +1,51 @@
-import java.util.ArrayList;
-
-public class sruthi {
-		public static String retrieveAllCCA(ArrayList<CCA>CCAList) {
-			String output="";
-			for (int i =0;i<CCAList.size();i++) {
-				output += String.format("%-84s\n", CCAList.get(i).toString());
-			}
-			return output;
-		}
-		public static String viewAllCCA(ArrayList<CCA> CCAList) {
-			C206_CaseStudy.setHeader("CCA LIST");
-			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "CCA TITLE", "DESCRIPTION",
-					"CLASS SIZE", "DAY OF WEEK","TIME","NAME","VENUE");
-			output +=retrieveAllCCA(CCAList);
-			System.out.println(output);
-			return output;
-			
-			
-		}
-		//does this work?
-		//check CCA size
-		
-		public static int checkCCAsize(ArrayList<CCA> CCAList) {
-			int position = 0;
-			boolean i = true;
-			while (i ==true) {
-				String cca_Title=" ";
-				String cca_class_size= " ";
-				cca_Title = Helper.readString("Enter CCA title >: ");
-				cca_class_size = Helper.readString("Enter CCA class size >: ");
-				
-				for (int c =0;c < CCAList.size();c++) {
-					if(CCAList.get(c).getCca_title().equals(cca_Title)) { //check if there input is inside CCAList
-						if(CCAList.get(c).getCca_class_size()>=50);
-						position = c;
-						i= false;
-						break;
-					}else {
-						System.out.println("Incorrect CCA class size,please try again");
-						break;
-					}
-				}
-				
-			}
-			return position;
-			
-		}
+//import java.util.ArrayList;
+//
+//public class sruthi {
+//		public static String retrieveAllCCA(ArrayList<CCA>CCAList) {
+//			String output="";
+//			for (int i =0;i<CCAList.size();i++) {
+//				output += String.format("%-84s\n", CCAList.get(i).toString());
+//			}
+//			return output;
+//		}
+//		public static String viewAllCCA(ArrayList<CCA> CCAList) {
+//			C206_CaseStudy.setHeader("CCA LIST");
+//			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "CCA TITLE", "DESCRIPTION",
+//					"CLASS SIZE", "DAY OF WEEK","TIME","NAME","VENUE");
+//			output +=retrieveAllCCA(CCAList);
+//			System.out.println(output);
+//			return output;
+//			
+//			
+//		}
+//		//does this work?
+//		//check CCA size
+//		
+//		public static int checkCCAsize(ArrayList<CCA> CCAList) {
+//			int position = 0;
+//			boolean i = true;
+//			while (i ==true) {
+//				String cca_Title=" ";
+//				String cca_class_size= " ";
+//				cca_Title = Helper.readString("Enter CCA title >: ");
+//				cca_class_size = Helper.readString("Enter CCA class size >: ");
+//				
+//				for (int c =0;c < CCAList.size();c++) {
+//					if(CCAList.get(c).getCca_title().equals(cca_Title)) { //check if there input is inside CCAList
+//						if(CCAList.get(c).getCca_class_size()>=50);
+//						position = c;
+//						i= false;
+//						break;
+//					}else {
+//						System.out.println("Incorrect CCA class size,please try again");
+//						break;
+//					}
+//				}
+//				
+//			}
+//			return position;
+//			
+//		}
 		
 	
 		//================================= Option 2 Add an user (CRUD - Create) =================================
@@ -65,48 +65,48 @@ public class sruthi {
 //			
 //		}
 		//
-		public static void addParent(ArrayList<parent> parentList, parent p) {
-			
-			parentList.add(p);
-			
-		}
+//		public static void addParent(ArrayList<parent> parentList, parent p) {
+//			
+//			parentList.add(p);
+//			
+//		}
 		
 		// FOR ADD CCA DETIALS
 		
-		public static CCA inputCCA() {
-			String category_title = Helper.readString("Enter category Title> ");
-			int category_id = Helper.readInt("Enter category ID> ");
-			String ccaTitle = Helper.readString("Enter CCA title > ");
-			String ccaDescription = Helper.readString("Enter CCA description > ");
-			int ccaClassSize = Helper.readInt("Enter CCA class size > ");
-			String ccaDay = Helper.readString("Enter CCA day of week> ");
-			int ccaTime = Helper.readInt("Enter CCA time > ");
-			String ccaVenue = Helper.readString("Enter CCA venue > ");
-			
-			CCA cca = new CCA (category_title,category_id ,ccaTitle, ccaDescription, ccaClassSize, ccaDay, ccaTime, ccaVenue);
-			return cca;
-			
-		}
-		
-		public static void addCCA(ArrayList<CCA>CCAList,CCA cca) {
-			CCAList.add(cca);
-		}
-		
-		
-		//================================= Option 3 Delete an user (CRUD - Delete) =================================
-		
-		public static void deleteParent(ArrayList<parent> parentList, parent p) {
-
-			parentList.remove(p);
-			
-		}
-		public static void deleteCCA(ArrayList<CCA>CCAList,CCA cca) {
-			CCAList.remove(cca);
-		}
-		
+//		public static CCA inputCCA() {
+//			String category_title = Helper.readString("Enter category Title> ");
+//			int category_id = Helper.readInt("Enter category ID> ");
+//			String ccaTitle = Helper.readString("Enter CCA title > ");
+//			String ccaDescription = Helper.readString("Enter CCA description > ");
+//			int ccaClassSize = Helper.readInt("Enter CCA class size > ");
+//			String ccaDay = Helper.readString("Enter CCA day of week> ");
+//			int ccaTime = Helper.readInt("Enter CCA time > ");
+//			String ccaVenue = Helper.readString("Enter CCA venue > ");
+//			
+//			CCA cca = new CCA (category_title,category_id ,ccaTitle, ccaDescription, ccaClassSize, ccaDay, ccaTime, ccaVenue);
+//			return cca;
+//			
+//		}
+//		
+//		public static void addCCA(ArrayList<CCA>CCAList,CCA cca) {
+//			CCAList.add(cca);
+//		}
+//		
+//		
+//		//================================= Option 3 Delete an user (CRUD - Delete) =================================
+//		
+//		public static void deleteParent(ArrayList<parent> parentList, parent p) {
+//
+//			parentList.remove(p);
+//			
+//		}
+//		public static void deleteCCA(ArrayList<CCA>CCAList,CCA cca) {
+//			CCAList.remove(cca);
+//		}
+//		
 		//test cases
 		
-}
+//}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	// ADD CCA details

@@ -1,10 +1,10 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-
-import org.junit.Test;
-
-public class katie {
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertSame;
+//
+//import org.junit.Test;
+//
+//public class katie {
 //	//================================= Option 1 Add student (CRUD- Create) =================================
 //    public static student inputStudent() {
 //      int StudentID = Helper.readInt("Enter Student ID:");
