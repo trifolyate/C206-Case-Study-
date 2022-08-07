@@ -111,7 +111,4 @@ public class katie {
 //		assertEquals("Test if that student arraylist size is 1?", 1, studentList.size());
 //	}
 	
-//	s1 = new student(1,"John",'A',"banana","ash");
-//	s2 = new student(2,"bob",'B',"minions","gru");
-//	s3 = new student(3,"snoopy",'C',"oo","gru");
-}
+
