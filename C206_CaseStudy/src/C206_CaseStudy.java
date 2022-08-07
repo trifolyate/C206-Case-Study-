@@ -1085,8 +1085,9 @@ public class C206_CaseStudy {
 		studentList.add(s);
 	}
 
-	public static void deleteStudent(ArrayList<student> studentList, student s) {
+	public static String deleteStudent(ArrayList<student> studentList, student s) {
 		studentList.remove(s);
+		return null;
 	}
 
 	// ================================= Option 3 Delete an user (CRUD - Delete)
@@ -1157,6 +1158,31 @@ public class C206_CaseStudy {
 
 	public static void deleteCCA(ArrayList<CCA> cCAList, CCA cca2) {
 
+	}
+
+	public static void addCCACategory(ArrayList<CCACategory> categoryList, CCACategory ccaCat1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static String retrieveAllCCACategory(ArrayList<CCACategory> categoryList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String viewAllCCACategory(ArrayList<CCACategory> categoryList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static void deleteCCACategory(ArrayList<CCACategory> categoryList, CCACategory ccaCat2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void addCCA(ArrayList<CCA> cCAList, CCA cca1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
