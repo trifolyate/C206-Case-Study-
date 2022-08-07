@@ -12,7 +12,8 @@ public class C206_CaseStudyTest {
 	private student s1;
 	private student s2;
 	private student s3;
-
+	private CCACategory ccaCat1;
+	private CCACategory ccaCat2;
 	private CCA cca1;
 	private CCA cca2;
 	
@@ -36,19 +37,19 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 
-		s1 = new student(1,"John",'A',"banana","ash");
-		s2 = new student(2,"bob",'B',"minions","gru");
-		s3 = new student(3,"snoopy",'C',"oo","gru");
-		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
-		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
+//		s1 = new student(1,"John",'A',"banana","ash");
+//		s2 = new student(2,"bob",'B',"minions","gru");
+//		s3 = new student(3,"snoopy",'C',"oo","gru");
+//		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
+//		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
 		p1 = new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1);
      	p2 = new parent("Ash Parent 2", "ash@gmail.com", 1234, 2);
-     	p3 = new parent("Ash 3", "ash@gmail.com", 1234, 2);
-     	p4 = new parent("Ash 4", "ash@gmail.com", 1234, 3);
-		
-
-		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
-		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
+//     	p3 = new parent("Ash 3", "ash@gmail.com", 1234, 2);
+//     	p4 = new parent("Ash 4", "ash@gmail.com", 1234, 3);
+//		
+//
+//		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
+//		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
 		
 		
 		studentList = new ArrayList<student>();
@@ -177,9 +178,9 @@ public class C206_CaseStudyTest {
 	public void testViewStudent() {
 		assertNotNull("Test if there is valid student arraylist to view from", studentList);
 		
-		String Students= C206_CaseStudy.viewAllStudent(studentList);
+		String students= C206_CaseStudy.viewAllStudent(studentList);
 		String testOutput = "";
-		assertEquals("Check that ViewAllStudentList", testOutput, Students);
+		assertEquals("Check that ViewAllStudentList", testOutput, students);
 		
 		assertEquals("Test if that student arraylist size is 2?", 2, studentList.size());
 
@@ -189,7 +190,7 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can delete a parent
 		assertNotNull("Test if there is valid Student arraylist to add to", studentList);
 		
-		String Students= C206_CaseStudy.viewAllStudent(studentList);
+		String Students= C206_CaseStudy.deleteStudent(studentList, s1);
 		String testOutput = "";
 		assertEquals("Check that ViewAllStudentlist", testOutput, Students);
 		
@@ -212,6 +213,76 @@ public class C206_CaseStudyTest {
 	
 	
 		}
+	
+//ADD CCA CATEGORY
+@Test
+public void testAddCCACategory() {
+//CCA category list is not null, so that can add a new CCA category
+assertNotNull("Test if there is valid CCA arraylist to add to", categoryList);
+
+//Given an empty list, after adding 1 CCA Category, the size of the list is 1
+C206_CaseStudy.addCCACategory(categoryList, ccaCat1);		
+assertEquals("Test if that CCA Category arraylist size is 1?", 1, categoryList.size());
+
+//The CCA category just added is as same as the first item of the list
+assertSame("Test that CCA category is added same as 1st item of the list?", ccaCat1, categoryList.get(0));
+
+//Add another CCA. test The size of the list is 2?
+C206_CaseStudy.addCCACategory(categoryList, ccaCat2);
+assertEquals("Test that CCA category arraylist size is 2?", 2, categoryList.size());
+
+}
+
+
+
+
+//VIEW CCA CATEGORY
+@Test
+public void testRetrieveAllCCACategory() {
+//Test if CCA category list is not null but empty, so that can add a new item
+assertNotNull("Test if there is valid CCA category arraylist to add to", categoryList);
+
+//test if the list of CCA category retrieved  is empty
+String allCCA= C206_CaseStudy.retrieveAllCCACategory(categoryList);
+String testOutput = "";
+Object allCCACategory = null;
+assertEquals("Check that ViewAllcategorylist", testOutput, allCCACategory);
+
+//Given an empty list, after adding 2 items, test if the size of the list is 2
+C206_CaseStudy.addCCACategory(categoryList, ccaCat1);
+C206_CaseStudy.addCCACategory(categoryList, ccaCat2);
+assertEquals("Test if that Chromebook arraylist size is 2?", 2, categoryList.size());
+
+//test if the expected output string same as the list of CCA retrieved from the SourceCentre
+allCCACategory = C206_CaseStudy.retrieveAllCCACategory(categoryList);
+
+testOutput = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n","Sports", "1");
+testOutput += String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n","Drama", "2");
+
+
+assertEquals("Check that ViewAllCCACategory", testOutput, allCCACategory);
+
+
+}
+
+
+
+//Delete CCA Category
+@Test
+public void testDeleteCCACategory() {
+assertNotNull("Test if there is valid CCA category arraylist to add to", categoryList);
+
+String CCA= C206_CaseStudy.viewAllCCACategory(categoryList);
+String testOutput = "";
+assertEquals("Check that ViewAllCCACategory", testOutput,CCA );
+
+C206_CaseStudy.deleteCCACategory(categoryList, ccaCat2);
+assertEquals("Test if that CCA category arraylist size is 1?", 1,categoryList.size());
+
+
+}
+	
+	
 	@After
 	public void tearDown() throws Exception {
 		p1 = null;

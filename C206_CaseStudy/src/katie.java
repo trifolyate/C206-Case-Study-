@@ -76,16 +76,27 @@ public class katie {
 //		assertSame("Test that Student is added same as 3rd item of the list?", s3, studentList.get(2));
 //		
 //	}
-//	@Test
+//		@Test
 //	public void testViewStudent() {
-//		assertNotNull("Test if there is valid student arraylist to view from", studentList);
+//		// Test if Item list is not null but empty, so that can add a new item
+//		assertNotNull("Test if there is valid Student ArrayList to add to", studentList);
 //		
-//		String Students= C206_CaseStudy.viewAllStudent(studentList);
+//		//test if the list of students retrieved from the SourceCentre is empty
+//		String allStudent= C206_CaseStudy.retrieveAllStudent(studentList);
 //		String testOutput = "";
-//		assertEquals("Check that ViewAllStudentList", testOutput, Students);
+//		assertEquals("Check that ViewAllStudentlist", testOutput, allStudent);
+//				
+//		//Given an empty list, after adding 2 items, test if the size of the list is 2
+//		C206_CaseStudy.addStudent(studentList, s1);
+//		C206_CaseStudy.addStudent(studentList, s2);
+//		assertEquals("Test if that Student arraylist size is 2?", 2, studentList.size());
 //		
-//		assertEquals("Test if that student arraylist size is 2?", 2, studentList.size());
-//
+//		//test if the expected output string same as the list of students retrieved from the SourceCentre
+//		
+//		allStudent = C206_CaseStudy.retrieveAllStudent(studentList);
+//		String testOutput1 = "";
+//		assertEquals("Check that ViewAllCamcorderlist", testOutput1, allStudent);
+//		
 //	}
 //	@Test
 //	public void testDeleteStudent() {
@@ -96,10 +107,8 @@ public class katie {
 //		String testOutput = "";
 //		assertEquals("Check that ViewAllStudentlist", testOutput, Students);
 //		
-//		C206_CaseStudy.deleteStudent(studentList, s2);
+//		C206_CaseStudy.deleteStudent(studentList, s1);
 //		assertEquals("Test if that student arraylist size is 1?", 1, studentList.size());
 //	}
-//	s1 = new student(1,"John",'A',"banana","ash");
-//	s2 = new student(2,"bob",'B',"minions","gru");
-//	s3 = new student(3,"snoopy",'C',"oo","gru");
-}
+	
+
