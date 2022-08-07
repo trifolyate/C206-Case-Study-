@@ -37,33 +37,25 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 
-//		s1 = new student(1,"John",'A',"banana","ash");
-//		s2 = new student(2,"bob",'B',"minions","gru");
-//		s3 = new student(3,"snoopy",'C',"oo","gru");
-//		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
-//		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
+		s1 = new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S123", "Ash Kid 1", 3, "3A",
+				"MS THAMMY", "C123", "", "", "", true, true);
+		s2 = new student("", "", 0, 0, "S456", "Ash Kid 2", 2, "2F", "Ms Ong", "AKHWUIDHadawidh", "", "", "",
+		false, true);
+		s3 = new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S789", "Ash Kid 3", 3, "3D",
+				"Ms Leih", "C789", "CCA1", "CCA2", "", true, true);
 		p1 = new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1);
-     	p2 = new parent("Ash Parent 2", "ash@gmail.com", 1234, 2);
-//     	p3 = new parent("Ash 3", "ash@gmail.com", 1234, 2);
-//     	p4 = new parent("Ash 4", "ash@gmail.com", 1234, 3);
+     	p2 = new parent("Ash Parent 2", "ash@gmail.com", 81023823, 2);
 //		
 //
-//		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
-//		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
+		cca1 = new CCA("Sports", 1, 1, "Soccer",
+				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
+				2, "Monday", "3:00PM-4:00PM", "Field");
+		cca2 = new CCA("Clubs & Societies", 2, 2, "Boy Scouts",
+		" an organization for boys that encourages them to take part in activities outside and to become responsible and independent.",
+		20, "Tuesday", "3:00PM-4:00PM", "Field");
 		
-		
-		studentList = new ArrayList<student>();
-		parentList = new ArrayList<parent>();
-	    teacherList = new ArrayList<Teacher>();
-		CCAList = new ArrayList<CCA>();
-		parentList=new ArrayList<parent>();
-
-		ArrayList<student> studentList = new ArrayList<student>();
-		ArrayList<parent> parentList = new ArrayList<parent>();
-		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-		ArrayList<CCA> CCAList = new ArrayList<CCA>();
-		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
-
+		ccaCat1 = new CCACategory("Sports", 1);
+		ccaCat1 = new CCACategory("Clubs & Societies", 2);
 	}
 
 	@Test
@@ -188,9 +180,8 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteStudent() {
 		// Item list is not null, so that can delete a parent
-		assertNotNull("Test if there is valid Student arraylist to add to", studentList);
 		
-		String Students= C206_CaseStudy.deleteStudent(studentList, s1);
+		Students= C206_CaseStudy.deleteStudent(studentList, s1);
 		String testOutput = "";
 		assertEquals("Check that ViewAllStudentlist", testOutput, Students);
 		
