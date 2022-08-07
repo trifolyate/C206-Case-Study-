@@ -9,9 +9,13 @@ public class student extends parent { // for P3 and below
 	private String CCA1;
 	private String CCA2;
 	private String CCA3;
+	private boolean registered;
+	private boolean lowerPrimary;
+
 
 	public student(String parentName, String email, int contactNo, int familyId, String studentID, String name,
-			int grade, String classroom, String teacher, String cCAID, String cCA1, String cCA2, String cCA3) {
+			int grade, String classroom, String teacher, String cCAID, String cCA1, String cCA2, String cCA3,
+			boolean registered, boolean lowerPrimary) {
 		super(parentName, email, contactNo, familyId);
 		this.studentID = studentID;
 		this.name = name;
@@ -22,6 +26,8 @@ public class student extends parent { // for P3 and below
 		CCA1 = cCA1;
 		CCA2 = cCA2;
 		CCA3 = cCA3;
+		this.registered = registered;
+		this.lowerPrimary = lowerPrimary;
 	}
 
 	public String getStudentID() {
@@ -95,6 +101,22 @@ public class student extends parent { // for P3 and below
 	public void setCCA3(String cCA3) {
 		CCA3 = cCA3;
 	}
+	
+	public boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(boolean registered) {
+		this.registered = registered;
+	}
+	
+	public boolean isLowerPrimary() {
+		return lowerPrimary;
+	}
+
+	public void setLowerPrimary(boolean lowerPrimary) {
+		this.lowerPrimary = lowerPrimary;
+	}
 
 	public String toMainStudentString() {
 		return "\nStudent ID: " + studentID + "\n Student Name: " + name + "\n Grade: " + grade + "\n Classroom: "
@@ -117,7 +139,7 @@ public class student extends parent { // for P3 and below
 		}
 		return result;
 	}
-	
+
 	public String toStudentCCASpecialString() {
 		String result = "";
 		if (!this.CCA1.isEmpty()) {
