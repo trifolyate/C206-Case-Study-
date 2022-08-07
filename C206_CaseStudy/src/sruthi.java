@@ -1,3 +1,7 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 
 public class sruthi {
@@ -123,43 +127,37 @@ public class sruthi {
 	}
 	
 	//================================= Option 1 View users (CRUD- Read) =================================
-		public static String retrieveAllParent(ArrayList<parent> parentList) {
-			String output = "";
-
-			for (int i = 0; i < parentList.size(); i++) {
-				
-				output += String.format("%-84s\n", parentList.get(i).toString());
-
-			}
-			return output;
+	//view cca
+	public static String retrieveCCADetails(ArrayList<CCA> CCAList, int ccaID) {
+		String output = "";
+		for (int i = 0; i < CCAList.size(); i++) {
+			if (CCAList.get(i).getCca_id() == ccaID)
+				output += String.format("Test");
 		}
-		public static String viewAllParent(ArrayList<parent> parentList) {
-			C206_CaseStudy.setHeader("PARENT LIST");
-			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "CHILD ID", "CHILD NAME",
-					"CHILD GRADE", "CHILD CLASS","CHILD TEACHER", "NAME", "CCA ID", "EMAIL", "CONTACT NO");
-			 output += retrieveAllParent(parentList);	
-			System.out.println(output);
-			return output;
+		return output;
+	}
+
+	public static String retrieveAllCCA(ArrayList<CCA> CCAList) {
+		String output = "";
+		for (int i = 0; i < CCAList.size(); i++) {
+			output += String.format("%-84s\n", CCAList.get(i).toString());
 		}
+		return output;
+	}
+
+	public static String viewAllCCA(ArrayList<CCA> CCAList) {
+		C206_CaseStudy.setHeader("CCA LIST");
+		System.out.print("\n");
+		String output = String.format("%-15s %-15s %-15s %-15s %-19s %-15s\n", "CCA ID", "CCA TITLE", "CLASS SIZE",
+				"DAY OF WEEK", "TIME", "VENUE");
+		output += retrieveAllCCA(CCAList);
+		System.out.println(output);
+		System.out.print("\n");
+		return output;
+
+	}
+
 		
-		// for VIEW ALL CCA
-		public static String retrieveAllCCA(ArrayList<CCA>CCAList) {
-			String output="";
-			for (int i =0;i<CCAList.size();i++) {
-				output += String.format("%-84s\n", CCAList.get(i).toString());
-			}
-			return output;
-		}
-		public static String viewAllCCA(ArrayList<CCA> CCAList) {
-			C206_CaseStudy.setHeader("CCA LIST");
-			String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "CCA TITLE", "DESCRIPTION",
-					"CLASS SIZE", "DAY OF WEEK","TIME","NAME","VENUE");
-			output +=retrieveAllCCA(CCAList);
-			System.out.println(output);
-			return output;
-			
-			
-		}
 		//does this work?
 		//check CCA size
 		
@@ -218,14 +216,16 @@ public class sruthi {
 		public static CCA inputCCA() {
 			String category_title = Helper.readString("Enter category Title> ");
 			int category_id = Helper.readInt("Enter category ID> ");
+			int cca_id = Helper.readInt("Enter category ID> ");
 			String ccaTitle = Helper.readString("Enter CCA title > ");
+			
 			String ccaDescription = Helper.readString("Enter CCA description > ");
 			int ccaClassSize = Helper.readInt("Enter CCA class size > ");
 			String ccaDay = Helper.readString("Enter CCA day of week> ");
-			int ccaTime = Helper.readInt("Enter CCA time > ");
+			String ccaTime = Helper.readString("Enter CCA time > ");
 			String ccaVenue = Helper.readString("Enter CCA venue > ");
 			
-			CCA cca = new CCA (category_title,category_id ,ccaTitle, ccaDescription, ccaClassSize, ccaDay, ccaTime, ccaVenue);
+			CCA cca = new CCA (category_title,category_id ,cca_id,ccaTitle, ccaDescription, ccaClassSize, ccaDay, ccaTime, ccaVenue);
 			return cca;
 			
 		}
@@ -299,7 +299,32 @@ public class sruthi {
 //					
 //			
 //		}
+//public void testViewAllCCA() {
+//assertNotNull("Test if there is valid CCA arraylist to view from", CCAList);
 //
+//String registeredCCA = C206_CaseStudy.viewAllParent(parentList);
+//String testOutput = "";
+//assertNotEquals("Check that ViewAllCCAList", testOutput, registeredCCA);
+//
+// C206_CaseStudy.addCCA(CCAList, cca1);
+// C206_CaseStudy.addCCA(CCAList, cca2);
+// 
+// assertEquals("Test if that CCA arraylist size is 2?", 2, CCAList.size());
+// registeredCCA = C206_CaseStudy.retrieveAllCCA(CCAList);
+// testOutput =String.format( "%-15s %-15s %-15s %-15s %-19s %-15s\n","Sports", 1, 1, "Soccer",
+//			"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
+//			2, "Monday", "3:00PM-4:00PM", "Field");
+// testOutput +=String.format( "%-15s %-15s %-15s %-15s %-19s %-15s\n","Clubs & Societies", 2, 2, "Boy Scouts",
+//			" an organization for boys that encourages them to take part in activities outside and to become responsible and independent.",
+//			20, "Tuesday", "3:00PM-4:00PM", "Field");
+// testOutput= testOutput.toString();
+// 
+// 
+// 
+// 
+//assertNotEquals("Check that view all CCA",testOutput,registeredCCA);
+//
+//}
 //	
 //
 //	//Delete CCA
