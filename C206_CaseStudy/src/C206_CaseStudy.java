@@ -957,7 +957,7 @@ public class C206_CaseStudy {
 	      String classroom = Helper.readString("Enter Student's Classroom:");
 	      String teacher = Helper.readString("Enter Student's teacher: ");
 	      
-	      student s = new student(teacher, teacher, StudentID,StudentID, studentName,teacher, StudentGrade,classroom,teacher, teacher, teacher, teacher, teacher);
+	      student s = new student(teacher, teacher, StudentID,StudentID, studentName,teacher, StudentGrade,classroom,teacher, teacher, teacher, teacher, teacher, false, false);
 	      return s;
 	      
 	    }
@@ -1007,7 +1007,9 @@ public class C206_CaseStudy {
 	      System.out.println(output);
 	      return output;
 	    }
-		if (userType == 1) {
+
+		private ArrayList<student> studentList;{
+		if (OPTION_LOGIN == 1) {
 	        // Add a student
 	        //student student = inputStudent();
 	        student student = inputStudent();
