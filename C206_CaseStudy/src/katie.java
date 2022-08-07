@@ -15,7 +15,6 @@ public class katie {
 //      
 //      student s = new student(StudentID,studentName,StudentGrade,classroom,teacher);
 //      return s;
-//      
 //    }
 //    public static void addStudent(ArrayList<student>studentList,student s) {
 //      studentList.add(s);

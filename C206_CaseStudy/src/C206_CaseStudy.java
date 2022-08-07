@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class C206_CaseStudy {
 
@@ -20,15 +23,15 @@ public class C206_CaseStudy {
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
 
-		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 1234, 1, "S123", "Ash Kid 1", 3, "3A", "MS THAMMY",
-				"C123", "Soccer", "", ""));
-		studentList.add(new student("Ash Parent 2", "ash@gmail.com", 1234, 2, "S456", "Ash Kid 2", 4, "4F", "Teacher",
-				"C456", "Soccer", "CCA2", "CCA3"));
-		studentList.add(new student("Ash 3", "ash@gmail.com", 1234, 2, "S789", "Ash Kid 3", 3, "3D", "Teacher", "C789",
-				"CCA1", "CCA2", ""));
-		studentList.add(new student("Ash 4", "ash@gmail.com", 1234, 3, "S987", "Ash Kid 4", 6, "6B", "Teacher", "C987",
-				"CCA1", "CCA2", "CCA3"));
-		parentList.add(new parent("Ash Parent 1", "ash@gmail.com", 1234, 1));
+		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S123", "Ash Kid 1", 3, "3A",
+				"MS THAMMY", "C123", "", "", "", true, true));
+		studentList.add(new student("", "", 0, 0, "S456", "Ash Kid 2", 2, "2F", "Ms Ong", "AKHWUIDHadawidh", "", "", "", false, true));
+		studentList.add(new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S789", "Ash Kid 3", 3, "3D",
+				"Ms Leih", "C789", "CCA1", "CCA2", "", true, true));
+		studentList.add(new student("", "", 0, 0, "S987", "Ash Kid 4", 6, "6B", "Mr K", "AKHWUIDHadawidh", "", "", "", false, false));
+		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S654", "Ash Kid 5", 2, "2B",
+				"Mr Tan", "C123", "Soccer", "", "", true, true));
+		parentList.add(new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1));
 		parentList.add(new parent("Ash Parent 2", "ash@gmail.com", 1234, 2));
 		parentList.add(new parent("Ash 3", "ash@gmail.com", 1234, 2));
 		parentList.add(new parent("Ash 4", "ash@gmail.com", 1234, 3));
@@ -50,7 +53,6 @@ public class C206_CaseStudy {
 		categoryList.add(new CCACategory("Sports", 1));
 		categoryList.add(new CCACategory("Clubs & Societies", 2));
 		int option = 0;
-
 		while (option != OPTION_QUIT) {
 			C206_CaseStudy.mainMenu();
 			option = Helper.readInt("Enter an option > ");
@@ -121,7 +123,6 @@ public class C206_CaseStudy {
 								Helper.line(80, "-");
 							} else {
 								loop = false;
-								System.out.print(teacherOption);
 							}
 						}
 					}
@@ -133,31 +134,22 @@ public class C206_CaseStudy {
 			}
 
 			else if (option == OPTION_REGISTER) {
-				// Add a new item
-				C206_CaseStudy.setHeader("ADD");
-				C206_CaseStudy.itemTypeMenu();
-
-				int userType = Helper.readInt("Enter option to select user type > ");
-
-				if (userType == 1) {
-					// Add a student
-//					 student student = inputStudent();
-	//				 C206_CaseStudy.addStudent(studentList, student);
-					 System.out.println("Student added");
-
-				} else if (userType == 2) {
-					// Add a parent
-		//			parent p = inputParent();
-//					C206_CaseStudy.addParent(parentList, p);
-					System.out.println("Parent added");
-
-				} else if (userType == 3) {
-					// Add a teacher
-					// teacher teacher = inputTeacher();
-					// C206_CaseStudy.addTeacher(teacherList, teacher);
-					 System.out.println("teacher added");
-				} else {
-					System.out.println("Invalid type");
+				System.out.print("\n");
+				C206_CaseStudy.setHeader("Register");
+				char registerOptions = 'z';
+				boolean continueAsking = true;
+				while (continueAsking == true) {
+					registerOptions = Helper.readChar(
+							"\nAre you a parent of a student that is P3 and below? \n(Y for Yes, N for No, E for exit): ");
+					if (registerOptions == 'Y' || registerOptions == 'y') {
+						RegisterStudentP3andBelow(studentList, parentList);
+					} else if (registerOptions == 'N' || registerOptions == 'n') {
+						RegisterStudentP3andAbove(studentList);
+					} else if (registerOptions == 'E' || registerOptions == 'e') {
+						break;
+					} else {
+						System.out.print("Incorrect option, please try again (Y or N)\n");
+					}
 				}
 			}
 
@@ -176,6 +168,7 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
 		System.out.println("1. Log in");
 		System.out.println("2. Register");
+		System.out.print("3. Exit\n");
 		Helper.line(80, "-");
 		// test
 	}
@@ -197,14 +190,14 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	public static void itemTypeMenu() {
-		C206_CaseStudy.setHeader("users");
-		System.out.println("1. Parent");
-		System.out.println("2. Student");
-		System.out.println("3. Teacher");
-		System.out.println("4. CCA");
-		System.out.println("5. CCA Categories");
-	}
+//	public static void itemTypeMenu() {
+//		C206_CaseStudy.setHeader("");
+//		System.out.println("1. Parent");
+//		System.out.println("2. Student");
+//		System.out.println("3. Teacher");
+//		System.out.println("4. CCA");
+//		System.out.println("5. CCA Categories");
+//	}
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
@@ -367,9 +360,11 @@ public class C206_CaseStudy {
 	public static int chooseCorrectStudent(ArrayList<student> list, int studentPositionInList) {
 		int position = 9999;
 		boolean loop = true;
+		boolean noFamilydata = true;
+		List<String> studentIDOptions = new ArrayList<String>();
 		for (int i = 0; i < list.size(); i++) {
 
-			if (list.get(i).getFamilyId() == (list.get(studentPositionInList).getFamilyId())) { // prints
+			if (list.get(i).getFamilyId() == (list.get(studentPositionInList).getFamilyId()) && list.get(studentPositionInList).getFamilyId() != 0) { // prints
 																								// the
 				// students
 				// details,
@@ -381,25 +376,43 @@ public class C206_CaseStudy {
 				// student
 				// having
 				// the same
-				// CCAID
+				// Family ID
 				// would
 				// mean that
 				// they are
-				// related
+				// related except 0 since they have not registered, log in without parents
+				noFamilydata = false;
+				String studentID = list.get(i).getStudentID();
+				studentIDOptions.add(studentID);
 				String message = String.format(" %s", list.get(i).toMainStudentString());
 				System.out.print(message);
 				list.get(i).toStudentCCAString();
 				System.out.print("\n\n");
 			}
 		}
+		if(noFamilydata == true)
+		{
+			String studentID = list.get(studentPositionInList).getStudentID();
+			studentIDOptions.add(studentID);
+			String message = String.format(" %s", list.get(studentPositionInList).toMainStudentString());
+			System.out.print(message);
+			list.get(studentPositionInList).toStudentCCAString();
+			System.out.print("\n\n");
+		}
 		while (loop == true) {
-
+			
 			String focusStudent = Helper.readString("Enter the Student ID you wish to focus on:");
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getStudentID().equals(focusStudent)
-						&& list.get(studentPositionInList).getFamilyId() == list.get(i).getFamilyId()) {
-					position = i;
-					loop = false;
+			for (int i = 0; i < studentIDOptions.size(); i++) {
+				if (studentIDOptions.get(i).equals(focusStudent)) {
+					System.out.print(studentIDOptions.get(i));
+					for(int v = 0; v < list.size();v++)
+					{
+						if((studentIDOptions.get(i).equals(list.get(v).getStudentID())))
+								{
+							position = v;
+							loop = false;
+								}
+					}
 				}
 
 			}
@@ -547,8 +560,8 @@ public class C206_CaseStudy {
 			System.out.print(String.format(" (2) View %s Details\n", teacherlist.get(teacherPosition).getCca_title()));
 			System.out.print(String.format(" (3) Edit %s Details\n", teacherlist.get(teacherPosition).getCca_title()));
 			System.out.print(" (4) Exit\n\n");
-			int teacherchoice = Helper.readInt("Select an option (1,2, or 3): ");
-			if (teacherchoice == 1 || teacherchoice == 2 || teacherchoice == 3) {
+			int teacherchoice = Helper.readInt("Select an option (1,2,3 or 4): ");
+			if (teacherchoice == 1 || teacherchoice == 2 || teacherchoice == 3 || teacherchoice == 4) {
 				choice = teacherchoice;
 				loop = false;
 //				break;
@@ -595,13 +608,14 @@ public class C206_CaseStudy {
 				while (loop1 == true) {
 					char confirm = Helper.readChar("\nConfirm (Y or N)? : ");
 					if (confirm == 'Y' || confirm == 'y') {
-						for(int i = 0;i < studentlist.size();i++)
-						{
-							if(studentlist.get(i).getCCA1().equals(teacherlist.get(teacherPosition).getCca_title())) {
+						for (int i = 0; i < studentlist.size(); i++) {
+							if (studentlist.get(i).getCCA1().equals(teacherlist.get(teacherPosition).getCca_title())) {
 								studentlist.get(i).setCCA1(updatedTitle);
-							} else if(studentlist.get(i).getCCA2().equals(teacherlist.get(teacherPosition).getCca_title())) {
+							} else if (studentlist.get(i).getCCA2()
+									.equals(teacherlist.get(teacherPosition).getCca_title())) {
 								studentlist.get(i).setCCA2(updatedTitle);
-							} else if(studentlist.get(i).getCCA3().equals(teacherlist.get(teacherPosition).getCca_title())) {
+							} else if (studentlist.get(i).getCCA3()
+									.equals(teacherlist.get(teacherPosition).getCca_title())) {
 								studentlist.get(i).setCCA3(updatedTitle);
 							}
 						}
@@ -703,8 +717,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (updateChoice == 4) {
-				System.out.print(
-						String.format("\nCCA VENUE: %s\n", teacherlist.get(teacherPosition).getCca_venue()));
+				System.out.print(String.format("\nCCA VENUE: %s\n", teacherlist.get(teacherPosition).getCca_venue()));
 				String updatedVenue = Helper.readString("Enter New Venue: ");
 				boolean loop1 = true;
 				while (loop1 == true) {
@@ -729,17 +742,206 @@ public class C206_CaseStudy {
 
 	// ================================= Option 2 Add an user (CRUD - Create)
 	// =================================
-	public static void inputParent() {
-		String childID = Helper.readString("Enter child's ID > ");
-		String childName = Helper.readString("Enter child's name > ");
-		char grade = Helper.readChar("Enter child's grade > ");
-		String classroom = Helper.readString("Enter child's class > ");
-		String teacher = Helper.readString("Enter child's teacher > ");
-		String parentName = Helper.readString("Enter parent's name > ");
-		String CCAID = Helper.readString("Enter CCA ID > ");
-		String email = Helper.readString("Enter email > ");
-		int contactNo = Helper.readInt("Enter contact number > ");
 
+	public static void RegisterStudentP3andBelow(ArrayList<student> studentlist, ArrayList<parent> parentlist) { // Using
+																													// Katie
+		String parentName = Helper.readString("Enter your name (parent): ");
+		int contactNo = 0;
+		boolean contactNoCorrect = false;
+		while (contactNoCorrect == false) {
+			String contactNoString = Helper.readString("Enter your Contact Number (parent): ");
+			if (contactNoString.matches("[8-9].*") && contactNoString.length() == 8) {
+				contactNo = Integer.parseInt(contactNoString);
+				contactNoCorrect = true;
+			}
+			if (contactNoCorrect == false) {
+				System.out.print(
+						"Incorrect Number Format, Please Try Again \n(must start with 8 or 9, and only have 9 numbers)\n\n");
+			}
+		}
+		String email = "";
+		boolean emailCorrect = false;
+		while (emailCorrect == false) {
+			email = Helper.readString("Enter your email(parent): ");
+			Pattern p = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+			Matcher m = p.matcher(email);
+			boolean matchFound = m.matches();
+			if (matchFound) {
+				emailCorrect = true;
+			} else {
+				System.out.print("Incorrect Email Format, Please Try Again (must have an @)\n\n");
+			}
+		}
+		int studentRegisteredPosition = -1;
+		boolean repeatAddingStudent = true;
+		while (repeatAddingStudent == true) {
+			boolean studentFound = false;
+			while (studentFound == false) {
+				String StudentID = Helper.readString("Enter Student ID (enter -1 to exit): ");
+				for (int i = 0; i < studentlist.size(); i++) {
+					if (studentlist.get(i).getStudentID().equals(StudentID)) {
+						studentRegisteredPosition = i;
+						studentFound = true;
+					}
+				}
+				if (StudentID.equals("-1")) {
+					repeatAddingStudent = false;
+					break;
+				} else if (studentFound != true) {
+					System.out.print("Incorrect Student ID, Please Try Again (make sure 'S' is capital)\n\n");
+				}
+
+			}
+			char repeatRegistration = 'z';
+			if (studentRegisteredPosition != -1) {
+				if (studentlist.get(studentRegisteredPosition).isRegistered() == true) {
+					System.out.print(
+							"It seems like the student has already registered with a parent account\n(one student, one parent)\nPlease log in using this student's ID and the CCA Registration ID that \nwe have send you to your email\n\n");
+					break;
+				} else {
+					studentlist.get(studentRegisteredPosition).setRegistered(true);
+					boolean loopCCAID = true;
+					while (loopCCAID == true) {
+						int min = 100;
+						int max = 999;
+						int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+//						String CCAID = String.format("C%d", random_int);
+						String CCAID = "C123";
+						boolean sameCCAID = true;
+						for (int i = 0; i < studentlist.size(); i++) {
+							System.out.print(i);
+							if (studentlist.get(i).getCCAID().equals(CCAID)) {
+								random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+								CCAID = String.format("C%d", random_int);
+							} else {
+								sameCCAID = false;
+							}
+						}
+						if (sameCCAID == false) {
+							studentlist.get(studentRegisteredPosition).setCCAID(CCAID);
+							loopCCAID = false;
+						}
+
+					}
+					System.out.print("\n");
+					C206_CaseStudy.setHeader("EMAIL SENT!!");
+					System.out.print(String.format("Student ID: %s\nCCA REGISTRATION ID: %s\n",
+							studentlist.get(studentRegisteredPosition).getStudentID(),
+							studentlist.get(studentRegisteredPosition).getCCAID()));
+					Helper.line(80, "-");
+					int familyid = parentlist.size() + 1;
+					boolean newParent = true;
+					for (int i = 0; i < parentlist.size(); i++) {
+						if (parentlist.get(i).getContactNo() == contactNo) {
+							newParent = false;
+//							String parentName, String email, int contactNo, int familyId
+							String currentparentName = parentlist.get(i).getParentName();
+							String currentemail = parentlist.get(i).getEmail();
+							int currentContactNo = parentlist.get(i).getContactNo();
+							int currentfamilyId = parentlist.get(i).getFamilyId();
+							studentlist.get(studentRegisteredPosition).setParentName(currentparentName);
+							studentlist.get(studentRegisteredPosition).setContactNo(currentContactNo);
+							studentlist.get(studentRegisteredPosition).setEmail(currentemail);
+							studentlist.get(studentRegisteredPosition).setFamilyId(currentfamilyId);
+						}
+					}
+					if (newParent == true) {
+						inputParentForRegistration(parentlist, parentName, email, contactNo, familyid);
+						studentlist.get(studentRegisteredPosition).setParentName(parentName);
+						studentlist.get(studentRegisteredPosition).setContactNo(contactNo);
+						studentlist.get(studentRegisteredPosition).setEmail(email);
+						studentlist.get(studentRegisteredPosition).setFamilyId(familyid);
+					}
+					System.out.print(studentlist.get(studentRegisteredPosition).getFamilyId());
+					boolean repeatRegistrationloop = true;
+					while (repeatRegistrationloop == true) {
+						repeatRegistration = Helper.readChar("\nWould you like to register more students? (Y or N): ");
+						if (repeatRegistration == 'Y' || repeatRegistration == 'y') {
+							System.out.print("");
+						} else if (repeatRegistration == 'N' || repeatRegistration == 'n') {
+							System.out.print("");
+							repeatAddingStudent = false;
+							repeatRegistrationloop = false;
+						} else {
+							System.out.print("Incorrect Input Please Try again\n\n");
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public static void RegisterStudentP3andAbove(ArrayList<student> studentlist) {
+		int studentRegisteredPosition = -1;
+		boolean studentFound = false;
+		while (studentFound == false) {
+			String StudentID = Helper.readString("Enter Student ID (enter -1 to exit): ");
+			for (int i = 0; i < studentlist.size(); i++) {
+				if (studentlist.get(i).getStudentID().equals(StudentID)) {
+					studentRegisteredPosition = i;
+					studentFound = true;
+				}
+			}
+			if (StudentID.equals("-1")) {
+				break;
+			} else if (studentFound != true) {
+				System.out.print("Incorrect Student ID, Please Try Again (make sure 'S' is capital)\n\n");
+			}
+
+		}
+		if (studentRegisteredPosition != -1) {
+			if (studentlist.get(studentRegisteredPosition).isRegistered() == true) {
+				System.out.print(
+						"It seems like the student has already registered\n(one student, one account)\nPlease log in using this student's ID and the CCA Registration ID that \nwe have send you to your email\n\n");
+			} else {
+				studentlist.get(studentRegisteredPosition).setRegistered(true);
+				boolean loopCCAID = true;
+				while (loopCCAID == true) {
+					int min = 100;
+					int max = 999;
+					int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+//					String CCAID = String.format("C%d", random_int);
+					String CCAID = "C123";
+					boolean sameCCAID = true;
+					for (int i = 0; i < studentlist.size(); i++) {
+						System.out.print(i);
+						if (studentlist.get(i).getCCAID().equals(CCAID)) {
+							random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+							CCAID = String.format("C%d", random_int);
+						} else {
+							sameCCAID = false;
+						}
+					}
+					if (sameCCAID == false) {
+						studentlist.get(studentRegisteredPosition).setCCAID(CCAID);
+						loopCCAID = false;
+					}
+
+				}
+				System.out.print("\n");
+				C206_CaseStudy.setHeader("EMAIL SENT!!");
+				System.out.print(String.format("Student ID: %s\nCCA REGISTRATION ID: %s\n",
+						studentlist.get(studentRegisteredPosition).getStudentID(),
+						studentlist.get(studentRegisteredPosition).getCCAID()));
+				Helper.line(80, "-");
+			}
+		}
+	}
+
+	public static void inputParentForSuperUser(ArrayList<parent> parentlist) {
+		String parentName = Helper.readString("Enter Parent Name: ");
+		String email = Helper.readString("Enter Parent Email: ");
+		int contactNo = Helper.readInt("Enter Contact No: ");
+		int familyid = parentlist.size() + 1;
+
+		parent p = new parent(parentName, email, contactNo, familyid);
+		addParent(parentlist, p);
+	}
+
+	public static void inputParentForRegistration(ArrayList<parent> parentlist, String parentName, String email,
+			int contactNo, int familyid) {
+		parent p = new parent(parentName, email, contactNo, familyid);
+		addParent(parentlist, p);
 	}
 
 	public static void addParent(ArrayList<parent> parentList, parent p) {
