@@ -41,26 +41,21 @@ public class C206_CaseStudyTest {
 		s3 = new student(3,"snoopy",'C',"oo","gru");
 		s1 = new student(1001, "John", 'B', "B101", "Mr Tan");
 		s2 = new student(1002, "Max", 'C', "B102", "Mr Lim");
-		p1 = new parent(1001, "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
-     	p2 = new parent(1002, "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
+		p1 = new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1);
+     	p2 = new parent("Ash Parent 2", "ash@gmail.com", 1234, 2);
+     	p3 = new parent("Ash 3", "ash@gmail.com", 1234, 2);
+     	p4 = new parent("Ash 4", "ash@gmail.com", 1234, 3);
 		
 
 		cca1 = new CCA("MUSIC","All songs",20,"monday",9,"Hall1");
 		cca2 = new CCA("dance","All dance",25,"tuesday",10,"Hall");
 		
 		
-		//ArrayList<student> studentList = new ArrayList<student>();
-		//ArrayList<parent> parentList = new ArrayList<parent>();
-		//ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-		//ArrayList<CCA> CCAList = new ArrayList<CCA>();
+		studentList = new ArrayList<student>();
+		parentList = new ArrayList<parent>();
+	    teacherList = new ArrayList<Teacher>();
 		CCAList = new ArrayList<CCA>();
 		parentList=new ArrayList<parent>();
-
-		s1 = new student("1001", "John", 'B', "B101", "Mr Tan");
-		s2 = new student("1002", "Max", 'C', "B102", "Mr Lim");
-		p1 = new parent("1001", "John", 'B', "B101", "Mr Tan", "Mrs Lim", "B2345E", "limsy@gmail.com", 92345678);
-		p2 = new parent("1002", "Max", 'C', "B102", "Mr Lim", "Mr lee", "A1234D", "leejh@gmail.com", 81234567);
-
 
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<parent> parentList = new ArrayList<parent>();
@@ -206,10 +201,17 @@ public class C206_CaseStudyTest {
 	//Delete CCA
 	@Test
 	public void testDeleteCCA() {
-
-
-	}
-
+	             assertNotNull("Test if there is valid CCA arraylist to add to", CCAList);
+			
+			String CCA= C206_CaseStudy.viewAllCCA(CCAList);
+			String testOutput = "";
+			assertEquals("Check that ViewAllCAAList", testOutput,CCA );
+			
+			C206_CaseStudy.deleteCCA(CCAList, cca2);
+			assertEquals("Test if that student arraylist size is 1?", 1,CCAList.size());
+	
+	
+		}
 	@After
 	public void tearDown() throws Exception {
 		p1 = null;
