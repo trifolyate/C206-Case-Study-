@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//help check please thank you <3
+
 public class newMatthew {
 	private static final int OPTION_QUIT = 4;
 	private static final int OPTION_VIEW = 1;
@@ -123,4 +125,4 @@ public class newMatthew {
 //
 //
 //}
-//
+// 
