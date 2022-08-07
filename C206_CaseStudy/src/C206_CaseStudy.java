@@ -22,19 +22,27 @@ public class C206_CaseStudy {
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<CCACategory> categoryList = new ArrayList<CCACategory>();
+		ArrayList<superUser> superUserList = new ArrayList<superUser>();
+		
 
 		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S123", "Ash Kid 1", 3, "3A",
 				"MS THAMMY", "C123", "", "", "", true, true));
-		studentList.add(new student("", "", 0, 0, "S456", "Ash Kid 2", 2, "2F", "Ms Ong", "AKHWUIDHadawidh", "", "", "", false, true));
+		studentList.add(new student("", "", 0, 0, "S456", "Ash Kid 2", 2, "2F", "Ms Ong", "AKHWUIDHadawidh", "", "", "",
+				false, true));
 		studentList.add(new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S789", "Ash Kid 3", 3, "3D",
 				"Ms Leih", "C789", "CCA1", "CCA2", "", true, true));
-		studentList.add(new student("", "", 0, 0, "S987", "Ash Kid 4", 6, "6B", "Mr K", "AKHWUIDHadawidh", "", "", "", false, false));
+		studentList.add(new student("", "", 0, 0, "S987", "Ash Kid 4", 6, "6B", "Mr K", "AKHWUIDHadawidh", "", "", "",
+				false, false));
 		studentList.add(new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S654", "Ash Kid 5", 2, "2B",
 				"Mr Tan", "C123", "Soccer", "", "", true, true));
+		
+		
 		parentList.add(new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1));
 		parentList.add(new parent("Ash Parent 2", "ash@gmail.com", 1234, 2));
 		parentList.add(new parent("Ash 3", "ash@gmail.com", 1234, 2));
 		parentList.add(new parent("Ash 4", "ash@gmail.com", 1234, 3));
+		
+		
 		CCAList.add(new CCA("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Monday", "3:00PM-4:00PM", "Field"));
@@ -44,14 +52,21 @@ public class C206_CaseStudy {
 		CCAList.add(new CCA("Sports", 1, 3, "Soccer2",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Monday", "Lunch Break", "Field"));
+		
+		
 		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Wednesday", "Lunch Break", "Field", "T123", "Mr. Ash", "apple"));
 		teacherList.add(new Teacher("Sports", 1, 1, "Soccer",
 				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
 				2, "Wedesday", "3:00PM- 4:00PM", "Field", "T321", "Mr. Ash1", "apple1"));
+		
+		
 		categoryList.add(new CCACategory("Sports", 1));
 		categoryList.add(new CCACategory("Clubs & Societies", 2));
+		
+		
+		superUserList.add(new superUser("U1","password","Ash Principal", "Principal"));
 		int option = 0;
 		while (option != OPTION_QUIT) {
 			C206_CaseStudy.mainMenu();
@@ -127,8 +142,30 @@ public class C206_CaseStudy {
 						}
 					}
 
-				} else if (userOption == 3) {
-
+				} else if (userOption == 3) { // super User
+					System.out.print("\n");
+					C206_CaseStudy.LoginMenu();
+					int superUserInList = 0;
+					superUserInList = findSuperUserPositionInList(superUserList);
+					if (superUserInList != -1) {
+						System.out.print("\n");
+						C206_CaseStudy.setHeader("Teacher CCA Page");
+						boolean loop = true;
+						while (loop == true) {
+							int teacherOption = superUserChoices(superUserList, superUserInList);
+							if (teacherOption == 1) // view students inside CCA
+							{
+							} else if (teacherOption == 2) // View CCA Details
+							{
+							} else if (teacherOption == 3) // Edit CCA Details
+							{
+							} else {
+								loop = false;
+							}
+						}
+					}
+					
+					
 				} else if (userOption == 4) { // empty means it will go back to Main Page
 				}
 			}
@@ -364,8 +401,9 @@ public class C206_CaseStudy {
 		List<String> studentIDOptions = new ArrayList<String>();
 		for (int i = 0; i < list.size(); i++) {
 
-			if (list.get(i).getFamilyId() == (list.get(studentPositionInList).getFamilyId()) && list.get(studentPositionInList).getFamilyId() != 0) { // prints
-																								// the
+			if (list.get(i).getFamilyId() == (list.get(studentPositionInList).getFamilyId())
+					&& list.get(studentPositionInList).getFamilyId() != 0) { // prints
+				// the
 				// students
 				// details,
 				// based on
@@ -390,8 +428,7 @@ public class C206_CaseStudy {
 				System.out.print("\n\n");
 			}
 		}
-		if(noFamilydata == true)
-		{
+		if (noFamilydata == true) {
 			String studentID = list.get(studentPositionInList).getStudentID();
 			studentIDOptions.add(studentID);
 			String message = String.format(" %s", list.get(studentPositionInList).toMainStudentString());
@@ -400,18 +437,15 @@ public class C206_CaseStudy {
 			System.out.print("\n\n");
 		}
 		while (loop == true) {
-			
+
 			String focusStudent = Helper.readString("Enter the Student ID you wish to focus on:");
 			for (int i = 0; i < studentIDOptions.size(); i++) {
 				if (studentIDOptions.get(i).equals(focusStudent)) {
-					System.out.print(studentIDOptions.get(i));
-					for(int v = 0; v < list.size();v++)
-					{
-						if((studentIDOptions.get(i).equals(list.get(v).getStudentID())))
-								{
+					for (int v = 0; v < list.size(); v++) {
+						if ((studentIDOptions.get(i).equals(list.get(v).getStudentID()))) {
 							position = v;
 							loop = false;
-								}
+						}
 					}
 				}
 
@@ -538,7 +572,7 @@ public class C206_CaseStudy {
 				System.out.print("\n");
 				System.out.print("\n");
 			} else if (foundUsername == true && teacherPosition == -1) {
-				input += "Incorrect Staff ID, Please Try Again";
+				input += "Incorrect Password, Please Try Again";
 				System.out.print(input);
 				System.out.print("\n");
 				System.out.print("\n");
@@ -744,8 +778,21 @@ public class C206_CaseStudy {
 	// =================================
 
 	public static void RegisterStudentP3andBelow(ArrayList<student> studentlist, ArrayList<parent> parentlist) { // Using
-																													// Katie
-		String parentName = Helper.readString("Enter your name (parent): ");
+
+		String parentName = "";// Katie
+		boolean nameCorrect = false;
+		while (nameCorrect == false) {
+			parentName = Helper.readString("Enter your name (parent): ");
+			String input = parentName.trim();
+			Pattern p = Pattern.compile("[a-zA-Z ]+"); // copied from internet
+			Matcher m = p.matcher(input);
+			boolean matchFound = m.matches();
+			if (matchFound) {
+				nameCorrect = true;
+			} else {
+				System.out.print("Incorrect Name Format, Please Try Again (only letters)\n\n");
+			}
+		}
 		int contactNo = 0;
 		boolean contactNoCorrect = false;
 		while (contactNoCorrect == false) {
@@ -756,14 +803,14 @@ public class C206_CaseStudy {
 			}
 			if (contactNoCorrect == false) {
 				System.out.print(
-						"Incorrect Number Format, Please Try Again \n(must start with 8 or 9, and only have 9 numbers)\n\n");
+						"Incorrect Number Format, Please Try Again \n(must start with 8 or 9, and only have 8 numbers)\n\n");
 			}
 		}
 		String email = "";
 		boolean emailCorrect = false;
 		while (emailCorrect == false) {
 			email = Helper.readString("Enter your email(parent): ");
-			Pattern p = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+			Pattern p = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"); // copied from internet
 			Matcher m = p.matcher(email);
 			boolean matchFound = m.matches();
 			if (matchFound) {
@@ -773,6 +820,7 @@ public class C206_CaseStudy {
 			}
 		}
 		int studentRegisteredPosition = -1;
+		boolean repeated = false;
 		boolean repeatAddingStudent = true;
 		while (repeatAddingStudent == true) {
 			boolean studentFound = false;
@@ -807,17 +855,18 @@ public class C206_CaseStudy {
 						int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
 //						String CCAID = String.format("C%d", random_int);
 						String CCAID = "C123";
-						boolean sameCCAID = true;
+						boolean uniqueCCAID = false;
 						for (int i = 0; i < studentlist.size(); i++) {
-							System.out.print(i);
 							if (studentlist.get(i).getCCAID().equals(CCAID)) {
 								random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
 								CCAID = String.format("C%d", random_int);
-							} else {
-								sameCCAID = false;
+								uniqueCCAID = true;
+								continue;
+							}else {
+								uniqueCCAID = false;
 							}
 						}
-						if (sameCCAID == false) {
+						if (uniqueCCAID == true) {
 							studentlist.get(studentRegisteredPosition).setCCAID(CCAID);
 							loopCCAID = false;
 						}
@@ -852,12 +901,12 @@ public class C206_CaseStudy {
 						studentlist.get(studentRegisteredPosition).setEmail(email);
 						studentlist.get(studentRegisteredPosition).setFamilyId(familyid);
 					}
-					System.out.print(studentlist.get(studentRegisteredPosition).getFamilyId());
 					boolean repeatRegistrationloop = true;
 					while (repeatRegistrationloop == true) {
 						repeatRegistration = Helper.readChar("\nWould you like to register more students? (Y or N): ");
 						if (repeatRegistration == 'Y' || repeatRegistration == 'y') {
-							System.out.print("");
+							repeatRegistrationloop = false;
+							studentRegisteredPosition = -1;
 						} else if (repeatRegistration == 'N' || repeatRegistration == 'n') {
 							System.out.print("");
 							repeatAddingStudent = false;
@@ -928,6 +977,75 @@ public class C206_CaseStudy {
 		}
 	}
 
+	public static int findSuperUserPositionInList(ArrayList<superUser> superuserlist) {
+		int position = -1;
+		boolean loop = true;
+		while (loop == true) {
+
+			String username = "";
+			String password = "";
+			String input = "";
+			boolean foundUsername = false;
+			username = Helper.readString("Enter ID(enter 'exit' to go back to main menu) > ");
+			if (username.equalsIgnoreCase("exit")) {
+				loop = false;
+				return position;
+			}
+			password = Helper.readString("Enter Password > ");
+
+			for (int i = 0; i < superuserlist.size(); i++) {
+				if (superuserlist.get(i).getUsername().equals(username)) {
+					foundUsername = true;
+					if (superuserlist.get(i).getPassword().equals(password)) {
+						position = i;
+						loop = false;
+					}
+				}
+			}
+			if (foundUsername == false) {
+				input += "Incorrect Staff ID / Password, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			} else if (foundUsername == true && position == -1) {
+				input += "Incorrect Password, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			}
+
+		}
+		return position;
+	}
+
+	public static int superUserChoices(ArrayList<superUser> superlist,int position)
+	{
+		int option = -1;
+		boolean loop = true;
+		System.out.print("\n");
+		System.out.print(String.format("WELCOME, %s", superlist.get(position).getName()));
+		System.out.print("\n");
+		while (loop == true) {
+			System.out.print("\n (1) Add/View/Delete Student \n");
+			System.out.print(" (2) Add/View/Delete CCA \n");
+			System.out.print(" (3) Add/View/Delete CCA Category \n");
+			System.out.print(" (4) Add/View/Delete Parent \n");
+			System.out.print(" (5) Exit\n\n");
+			int superuserchoice = Helper.readInt("Select an option (1,2,3,4, or 5): ");
+			if (superuserchoice >= 1 && superuserchoice <= 5) {
+				option = superuserchoice;
+				loop = false;
+//				break;
+			} else {
+				String input = "Incorrect Option, Please Try Again";
+				System.out.print(input);
+				System.out.print("\n");
+				System.out.print("\n");
+			}
+		}
+		return option;
+	}
+
 	public static void inputParentForSuperUser(ArrayList<parent> parentlist) {
 		String parentName = Helper.readString("Enter Parent Name: ");
 		String email = Helper.readString("Enter Parent Email: ");
@@ -949,24 +1067,27 @@ public class C206_CaseStudy {
 		parentList.add(p);
 
 	}
-	
-	 public static student inputStudent() {
-	      int StudentID = Helper.readInt("Enter Student ID:");
-	      String studentName = Helper.readString("Enter Student's Name:");
-	      char StudentGrade = Helper.readChar("Enter Student's Grade:");
-	      String classroom = Helper.readString("Enter Student's Classroom:");
-	      String teacher = Helper.readString("Enter Student's teacher: ");
-	      
-	      student s = new student(teacher, teacher, StudentID,StudentID, studentName,teacher, StudentGrade,classroom,teacher, teacher, teacher, teacher, teacher, false, false);
-	      return s;
-	      
-	    }
-	    public static void addStudent(ArrayList<student>studentList,student s) {
-	      studentList.add(s);
-	    }
-	    public static void deleteStudent(ArrayList<student>studentList,student s) {
-	      studentList.remove(s);
-	    }
+
+	public static student inputStudent() {
+		int StudentID = Helper.readInt("Enter Student ID:");
+		String studentName = Helper.readString("Enter Student's Name:");
+		char StudentGrade = Helper.readChar("Enter Student's Grade:");
+		String classroom = Helper.readString("Enter Student's Classroom:");
+		String teacher = Helper.readString("Enter Student's teacher: ");
+
+		student s = new student(teacher, teacher, StudentID, StudentID, studentName, teacher, StudentGrade, classroom,
+				teacher, teacher, teacher, teacher, teacher, false, false);
+		return s;
+
+	}
+
+	public static void addStudent(ArrayList<student> studentList, student s) {
+		studentList.add(s);
+	}
+
+	public static void deleteStudent(ArrayList<student> studentList, student s) {
+		studentList.remove(s);
+	}
 
 	// ================================= Option 3 Delete an user (CRUD - Delete)
 	// =================================
@@ -988,51 +1109,54 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return output;
 	}
-	
-	 public static String retrieveAllStudent(ArrayList<student> studentList) {
-	      String output = "";
-	
-	      for (int i = 0; i < studentList.size(); i++) {
-	        
-	        output += String.format("%-84s\n", studentList.get(i).toString());
-	
-	      }
-	      return output;
-	    }
-	    public static String viewAllStudent(ArrayList<student> studentList) {
-	      C206_CaseStudy.setHeader("STUDENT LIST");
-	      String output = String.format("%-10d %-10s %-10s %-10s %-10s\n", "Student ID", "Student Name",
-	          "GRADE", "CLASSROOM","TEACHER");
-	       output += retrieveAllStudent(studentList);  
-	      System.out.println(output);
-	      return output;
-	    }
 
-		private ArrayList<student> studentList;{
+	public static String retrieveAllStudent(ArrayList<student> studentList) {
+		String output = "";
+
+		for (int i = 0; i < studentList.size(); i++) {
+
+			output += String.format("%-84s\n", studentList.get(i).toString());
+
+		}
+		return output;
+	}
+
+	public static String viewAllStudent(ArrayList<student> studentList) {
+		C206_CaseStudy.setHeader("STUDENT LIST");
+		String output = String.format("%-10d %-10s %-10s %-10s %-10s\n", "Student ID", "Student Name", "GRADE",
+				"CLASSROOM", "TEACHER");
+		output += retrieveAllStudent(studentList);
+		System.out.println(output);
+		return output;
+	}
+
+	private ArrayList<student> studentList;
+	{
 		if (OPTION_LOGIN == 1) {
-	        // Add a student
-	        //student student = inputStudent();
-	        student student = inputStudent();
-	        //C206_CaseStudy.addStudent(studentList, student);
-	        C206_CaseStudy.addStudent(studentList, student);
-	        //System.out.println("Student added");
-	        System.out.println("Student added");
-		if (OPTION_LOGIN == 1) {
-	        // Delete a student      
-	        //System.out.println("Student deleted");
-	        student student1 = inputStudent();
-	        C206_CaseStudy.deleteStudent(studentList, student1);
-	        System.out.println("Student deleted");}
-		}}
-		
+			// Add a student
+			// student student = inputStudent();
+			student student = inputStudent();
+			// C206_CaseStudy.addStudent(studentList, student);
+			C206_CaseStudy.addStudent(studentList, student);
+			// System.out.println("Student added");
+			System.out.println("Student added");
+			if (OPTION_LOGIN == 1) {
+				// Delete a student
+				// System.out.println("Student deleted");
+				student student1 = inputStudent();
+				C206_CaseStudy.deleteStudent(studentList, student1);
+				System.out.println("Student deleted");
+			}
+		}
+	}
+
 	// does this work?
 //test2
 	// good job
 	// why is this not working
 
 	public static void deleteCCA(ArrayList<CCA> cCAList, CCA cca2) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }
