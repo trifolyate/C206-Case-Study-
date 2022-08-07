@@ -12,6 +12,7 @@ public class student extends parent { // for P3 and below
 	private boolean registered;
 	private boolean lowerPrimary;
 
+	//test
 
 	public student(String parentName, String email, int contactNo, int familyId, String studentID, String name,
 			int grade, String classroom, String teacher, String cCAID, String cCA1, String cCA2, String cCA3,
