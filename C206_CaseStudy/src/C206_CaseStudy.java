@@ -45,8 +45,19 @@ public class C206_CaseStudy {
 				2, "Wedesday", "3:00PM- 4:00PM", "Field", "T321", "Mr. Ash1", "apple1"));
 		categoryList.add(new CCACategory("Sports", 1));
 		categoryList.add(new CCACategory("Clubs & Societies", 2));
+		
+		// ACCOUNT DETAILS: 
+		
+		// STUDENT(username,password,email(if student grade is 3 and lower))
+		// S123,C123,ash@gmail.com
+		// S456,C456
+		// S789,C789,ash@gmail.com
+		// S987,C987
+		
+		// TEACHER(username,password)
+		// T123,apple
+		// T321,apple1
 		int option = 0;
-
 		while (option != OPTION_QUIT) {
 			C206_CaseStudy.mainMenu();
 			option = Helper.readInt("Enter an option > ");
