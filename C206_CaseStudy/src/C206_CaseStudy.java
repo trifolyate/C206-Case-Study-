@@ -100,7 +100,7 @@ public class C206_CaseStudy {
 							}
 						}
 					}
-				} else if (userOption == 2) {
+				} else if (userOption == 2) { // teachers
 					System.out.print("\n");
 					C206_CaseStudy.LoginMenu();
 					int teacherPositionInList = 0;
