@@ -11,7 +11,8 @@ public class C206_CaseStudyTest {
 	private parent p2;
 	private student s1;
 	private student s2;
-	private student s3;
+	private student s3,s4,s5;
+	private Teacher t1;
 	private CCACategory ct1;
 	private CCACategory ct2;
 	private CCA cca1;
@@ -34,13 +35,17 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
-
+		
+		t1 = new Teacher("Sports", 1, 1, "Soccer",
+				"a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms.",
+				2, "Wednesday", "Lunch Break", "Field", "T123", "Mr. Ash", "apple");
 		s1 = new student("Ash Parent 1", "ash@gmail.com", 92341234, 1, "S123", "Ash Kid 1", 3, "3A",
 				"MS THAMMY", "C123", "", "", "", true, true);
 		s2 = new student("", "", 0, 0, "S456", "Ash Kid 2", 2, "2F", "Ms Ong", "AKHWUIDHadawidh", "", "", "",
 		false, true);
-		s3 = new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S789", "Ash Kid 3", 3, "3D",
-				"Ms Leih", "C789", "CCA1", "CCA2", "", true, true);
+		s3 = new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S789", "Ash Kid 3", 3, "3D", "Ms Leih", "C789", "CCA1", "CCA2", "", true, true);
+		s4 = new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S444", "Ash Kid 4", 3, "3B", "Ms Leih", "C444", "", "", "", true, true);
+		s5 = new student("Ash Parent 2", "ash@gmail.com", 91234567, 2, "S555", "Ash Kid 5", 6, "6A", "Ms Leih", "C555", "", "", "", true, true);
 		p1 = new parent("Ash Parent 1", "ash@gmail.com", 92341234, 1);
      	p2 = new parent("Ash Parent 2", "ash@gmail.com", 81023823, 2);
 //		
@@ -224,7 +229,9 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that student arraylist size is 2?", 2, studentList.size());
 	}
 	
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////CCA TEST CASES////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 //ADD CCA CATEGORY
 @Test
@@ -291,8 +298,75 @@ assertEquals("Check that ViewAllCCACategory", CCA,testOutput );
 C206_CaseStudy.deleteCCACategory(categoryList, ct2);
 assertEquals("Test if that CCA category arraylist size is 1?", 1,categoryList.size());
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////ASH TEST CASES/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	
+@Test
+public void testfindStudentPositioninList()
+{
+	//normal
+	assertNotNull("Test if there is valid student arraylist to add to", studentList);
+	studentList.add(s4);
+	studentList.add(s5);
+	// Test to see if System gives me the correct position of s5, as it indicates that both the Student ID and CCA Registration ID is inside the database
+	System.out.print("s5\n");
+	int StudentPosition = C206_CaseStudy.findStudentPositioninList(studentList);
+	assertEquals(" Test to see if System gives me the correct position of s5, as it indicates that both the Student ID and CCA Registration ID is inside the database",1,StudentPosition);
+	//Test to see if System will ask for email since s4 is a p3 student
+	System.out.print("s4\n");
+	int StudentPosition2 = C206_CaseStudy.findStudentPositioninList(studentList);
+	assertEquals("Test to see if System will ask for email since s4 is a p3 student",0,StudentPosition2);
+	//Test if StudentPosition3 is -1, which indicates that the user cannot provide with the correct Student ID and/or CCA Registration ID which lead them to enter 'exit' when asking for student ID, which prompts them back to the Main Page
+	//No error test as it will ask the user again to enter the details correctly, unless they cannot provide the correct Student ID and/or CCA Registration ID, in which case they enter 'exit', which also gives them StudentPosition3 to '-1';
+	System.out.print("press exit\n");
+	int StudentPosition3 = C206_CaseStudy.findStudentPositioninList(studentList);
+	assertEquals("Test if StudentPosition3 is -1, which indicates that the user cannot provide with the correct Student ID and/or CCA Registration ID which lead them to enter 'exit' when asking for student ID, which prompts them back to the Main Page",-1,StudentPosition3);
+}
+
+@Test
+public void testaddCCALoginStudent()
+{
+	//normal
+	assertNotNull("Test if there is valid student arraylist to add to", studentList);
+	assertNotNull("Test if there is valid cca arraylist to add to", CCAList);
+	assertNotNull("Test if there is valid teacher arraylist to add to", teacherList);
+//	//Test to see if s4 first cca,Soccer is filled up since it is set to empty
+	System.out.print("s4 soccer\n");
+	studentList.add(s4);
+	CCAList.add(cca1);
+	int StudentPosition = C206_CaseStudy.findStudentPositioninList(studentList);
+	C206_CaseStudy.addCCALoginStudent(CCAList, StudentPosition, studentList, teacherList);
+	String actual = studentList.get(StudentPosition).getCCA1();
+	String expected = "Soccer";
+	assertEquals("Test to see if s4 first cca is filled up since it is set to empty",expected,actual);
+	studentList.get(StudentPosition).setCCA1(""); //resets
+////	Test to see if s4 first cca will be empty since the user decides to choose not to add him/her to the CCA
+	System.out.print("s4 empty\n");
+	C206_CaseStudy.addCCALoginStudent(CCAList, StudentPosition, studentList, teacherList);
+	String actual1 = studentList.get(StudentPosition).getCCA1();
+	String expected1 = "";
+	assertEquals("Test to see if s4 first cca will be empty since the user decides to choose not to add him/her to the CCA",expected1,actual1);
+//	//No errors and boundary as I have coded in a way that it will keep asking the user to input the correct ID or character
+}
+@Test
+public void testfindTeacherPositionInList()
+{
+	//normal
+		assertNotNull("Test if there is valid teacher arraylist to add to", teacherList);
+		teacherList.add(t1);
+		// Test to see if System gives me the correct position of t1, as it indicates that both the Staff ID and password is inside the database
+		System.out.print("t1\n");
+		int teacherPositionInList = -1;
+		teacherPositionInList = C206_CaseStudy.findTeacherPositionInList(teacherList);
+		assertEquals(" Test to see if System gives me the correct position of t1, as it indicates that both the Staff ID and password is inside the database",0,teacherPositionInList);
+		//Test to see if System will make the teacherPositionInList2 into -1 as the user continues to input the wrong staff ID and password
+		//no boundary and error test as i have made the code in a way that it always ask the user to input the correct details, they can only enter the correct details or input exit to continue to the next step
+		System.out.print("exit\n");
+		int teacherPositionInList2 = C206_CaseStudy.findTeacherPositionInList(teacherList);
+		assertEquals("Test to see if System will make the teacherPositionInList2 into -1 as the user continues to input the wrong staff ID and password",-1,teacherPositionInList2);
+}
 	@After
 	public void tearDown() throws Exception {
 		p1 = null;
