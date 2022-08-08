@@ -1,3 +1,9 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+
+import org.junit.Test;
+
 //import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertSame;
@@ -57,7 +63,7 @@
 //        System.out.println("Student deleted");
 	
 	//test cases
-//	@Test
+//		@Test
 //	public void testAddStudent() {
 //		// Item list is not null, so that can add a new item
 //		assertNotNull("Test if there is valid Camcorder arraylist to add to", studentList);
@@ -76,39 +82,37 @@
 //		assertSame("Test that Student is added same as 3rd item of the list?", s3, studentList.get(2));
 //		
 //	}
-//		@Test
+//	@Test
 //	public void testViewStudent() {
-//		// Test if Item list is not null but empty, so that can add a new item
-//		assertNotNull("Test if there is valid Student ArrayList to add to", studentList);
-//		
-//		//test if the list of students retrieved from the SourceCentre is empty
-//		String allStudent= C206_CaseStudy.retrieveAllStudent(studentList);
-//		String testOutput = "";
-//		assertEquals("Check that ViewAllStudentlist", testOutput, allStudent);
-//				
-//		//Given an empty list, after adding 2 items, test if the size of the list is 2
+//		assertNotNull("Test if there is valid student arraylist to view from", studentList);
 //		C206_CaseStudy.addStudent(studentList, s1);
 //		C206_CaseStudy.addStudent(studentList, s2);
-//		assertEquals("Test if that Student arraylist size is 2?", 2, studentList.size());
+//		C206_CaseStudy.addStudent(studentList, s3);
+//		String students= C206_CaseStudy.retrieveAllStudent(studentList);
+//		String testOutput = String.format("%-10s %-14s %-10d %-10s %-10s %-10s\n", "S123", "Ash Kid 1", 3,"3A", "MS THAMMY","true");
+//		testOutput += String.format("\n%-10s %-14s %-10d %-10s %-10s %-10s\n", "S456", "Ash Kid 2", 2,"2F", "Ms Ong","false");
+//		testOutput += String.format("\n%-10s %-14s %-10d %-10s %-10s %-10s\n\n", "S789", "Ash Kid 3", 3,"3D", "Ms Leih","true");
+//		assertEquals("Check that ViewAllStudentList", testOutput, students);
 //		
-//		//test if the expected output string same as the list of students retrieved from the SourceCentre
-//		
-//		allStudent = C206_CaseStudy.retrieveAllStudent(studentList);
-//		String testOutput1 = "";
-//		assertEquals("Check that ViewAllCamcorderlist", testOutput1, allStudent);
-//		
+//		assertEquals("Test if that student arraylist size is 3?", 3, studentList.size());
+//
 //	}
 //	@Test
 //	public void testDeleteStudent() {
 //		// Item list is not null, so that can delete a parent
-//		assertNotNull("Test if there is valid Student arraylist to add to", studentList);
+//		assertNotNull("Test if there is valid student arraylist to view from", studentList);
 //		
-//		String Students= C206_CaseStudy.viewAllStudent(studentList);
-//		String testOutput = "";
-//		assertEquals("Check that ViewAllStudentlist", testOutput, Students);
+//		C206_CaseStudy.addStudent(studentList, s1);
+//		C206_CaseStudy.addStudent(studentList, s2);
+//		C206_CaseStudy.addStudent(studentList, s3);
+//		String CCA= C206_CaseStudy.retrieveAllStudent(studentList);
+//		String testOutput = String.format("%-10s %-14s %-10d %-10s %-10s %-10s\n", "S123", "Ash Kid 1", 3,"3A", "MS THAMMY","true");
+//		testOutput += String.format("\n%-10s %-14s %-10d %-10s %-10s %-10s\n", "S456", "Ash Kid 2", 2,"2F", "Ms Ong","false");
+//		testOutput += String.format("\n%-10s %-14s %-10d %-10s %-10s %-10s\n\n", "S789", "Ash Kid 3", 3,"3D", "Ms Leih","true");
+//		assertEquals("Check that ViewAllCAAList", testOutput,CCA );
 //		
-//		C206_CaseStudy.deleteStudent(studentList, s1);
-//		assertEquals("Test if that student arraylist size is 1?", 1, studentList.size());
+//		C206_CaseStudy.deleteStudent(studentList, s2);
+//		assertEquals("Test if that student arraylist size is 2?", 2, studentList.size());
 //	}
-	
+//	
 
